@@ -1,0 +1,2314 @@
+/* ===================================================================
+   RESET
+=================================================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===================================================================
+   ROOT VARIABLES
+=================================================================== */
+:root {
+  --bg: #080808;
+  --bg-mid: #0d0d0d;
+  --white: #f0ede6;
+  --gold: #c9a84c;
+  --gold-bright: #e3c878;
+  --gold-dim: rgba(201, 168, 76, 0.25);
+  --gold-glow: rgba(201, 168, 76, 0.12);
+  --muted: rgba(240, 237, 230, 0.45);
+  --muted-dim: rgba(240, 237, 230, 0.25);
+  --font-main: "Georgia", serif;
+  --font-ui: Arial, Helvetica, sans-serif;
+  --frame-border: rgba(201, 168, 76, 0.35);
+
+  /* Centralized z-index scale — documented so future overlays slot in
+     deliberately instead of guessing a number that happens to "work". */
+  --z-gallery-hover: 10;
+  --z-exhibit-overlay: 8000;
+  --z-artifact-lightbox: 8500; /* sits above the exhibit overlay — opened from within it */
+  --z-loader: 9999; /* must be torn down (display:none), never left at opacity:0 alone */
+}
+
+/* ===================================================================
+   BASE
+=================================================================== */
+html {
+  /* Intentionally 'auto' — Lenis drives smooth scrolling via GSAP's
+     ticker/RAF loop. Do NOT change to 'smooth': native smooth-scroll
+     fights Lenis's manual scroll position and causes stutter. */
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+}
+
+/* Scroll lock applied while any overlay (exhibit panel or artifact
+   lightbox) is open, so the page behind a modal can't be scrolled
+   independently of it. */
+body.overlay-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ===================================================================
+   NO-JS / LIB-FAILED FALLBACK
+   Default state: everything that GSAP would otherwise animate from
+   opacity:0 is fully visible. Only once JS confirms it's running AND
+   confirms GSAP/Lenis loaded does the .js-ready class engage the
+   hidden-until-animated starting states below. This means a CDN
+   failure, a script error, or JS being disabled all degrade to a
+   fully readable static page instead of a permanently blank one.
+=================================================================== */
+#main-content,
+.cinematic-word,
+.cinematic-paragraph,
+.hero-badge,
+#hero-title,
+#hero-sub,
+.hero-buttons,
+.hero-scroll-hint,
+.rights-heading,
+.rights-sub,
+.rights-card,
+.courage-heading,
+.courage-sub,
+.courage-divider,
+.exhibit-pedestal,
+.emergency-heading,
+.emergency-sub,
+.emergency-card {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.js-ready:not(.lib-failed) #main-content {
+  opacity: 0;
+}
+.js-ready:not(.lib-failed) .cinematic-word {
+  opacity: 0;
+  transform: translateY(60px);
+}
+.js-ready:not(.lib-failed) .cinematic-paragraph {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.js-ready:not(.lib-failed) .hero-badge {
+  opacity: 0;
+}
+.js-ready:not(.lib-failed) #hero-title {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.js-ready:not(.lib-failed) #hero-sub {
+  opacity: 0;
+}
+.js-ready:not(.lib-failed) .hero-buttons {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.js-ready:not(.lib-failed) .hero-scroll-hint {
+  opacity: 0;
+}
+.js-ready:not(.lib-failed) .rights-heading {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.js-ready:not(.lib-failed) .rights-sub {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.js-ready:not(.lib-failed) .rights-card {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.js-ready:not(.lib-failed) .courage-heading {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.js-ready:not(.lib-failed) .courage-sub {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.js-ready:not(.lib-failed) .courage-divider {
+  opacity: 0;
+}
+.js-ready:not(.lib-failed) .exhibit-pedestal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.js-ready:not(.lib-failed) .emergency-heading {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.js-ready:not(.lib-failed) .emergency-sub {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.js-ready:not(.lib-failed) .emergency-card {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.lib-failed #loader {
+  display: none !important;
+}
+
+/* ===================================================================
+   FOCUS STATES — visible keyboard focus across all interactive
+   elements (none existed in the previous version).
+=================================================================== */
+a:focus-visible,
+button:focus-visible,
+.rights-card:focus-visible,
+.exhibit-pedestal:focus-visible,
+.artifact-card:focus-visible,
+.query-chip:focus-visible,
+.exhibit-tab:focus-visible,
+textarea:focus-visible {
+  outline: 1px solid var(--gold-bright);
+  outline-offset: 3px;
+}
+
+/* ===================================================================
+   CINEMATIC LOADER
+=================================================================== */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #030303;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-loader);
+  overflow: hidden;
+}
+
+.loader-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 40%,
+    #1a1408 0%,
+    #080806 50%,
+    #030303 100%
+  );
+}
+
+.loader-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    transparent 30%,
+    rgba(0, 0, 0, 0.55) 65%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+#dust-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ---- Floating Portrait Frames ---- */
+.loader-frames {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.lframe {
+  position: absolute;
+  border: 1px solid var(--frame-border);
+  overflow: hidden;
+  opacity: 0;
+  will-change: transform, opacity;
+  background: #0a0906;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+}
+
+.lframe img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.25) brightness(0.72);
+  display: block;
+}
+
+.lframe-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 12px 8px;
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 3px;
+  color: var(--gold);
+  background: linear-gradient(transparent, rgba(3, 3, 3, 0.85));
+  text-align: center;
+}
+
+/* Frame sizes & positions — artistically scattered */
+.lframe-1 {
+  width: 160px;
+  height: 210px;
+  top: 8%;
+  left: 4%;
+}
+.lframe-2 {
+  width: 130px;
+  height: 170px;
+  top: 18%;
+  left: 14%;
+}
+.lframe-3 {
+  width: 150px;
+  height: 190px;
+  top: 55%;
+  left: 5%;
+}
+.lframe-4 {
+  width: 120px;
+  height: 160px;
+  top: 70%;
+  left: 17%;
+}
+.lframe-5 {
+  width: 140px;
+  height: 185px;
+  top: 10%;
+  right: 4%;
+}
+.lframe-6 {
+  width: 110px;
+  height: 140px;
+  top: 62%;
+  right: 5%;
+}
+.lframe-7 {
+  width: 125px;
+  height: 165px;
+  top: 20%;
+  right: 15%;
+}
+.lframe-8 {
+  width: 135px;
+  height: 175px;
+  top: 45%;
+  right: 3%;
+}
+.lframe-9 {
+  width: 105px;
+  height: 135px;
+  top: 75%;
+  right: 18%;
+}
+
+.lframe-artifact img {
+  filter: sepia(0.4) brightness(0.6) contrast(1.1);
+}
+
+/* ---- Museum watermark label ---- */
+.loader-museum-label {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 10px;
+  color: rgba(201, 168, 76, 0.2);
+  z-index: 5;
+  white-space: nowrap;
+}
+
+/* ---- Center identity ---- */
+.loader-identity {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  pointer-events: none;
+}
+
+.loader-title-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.loader-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  letter-spacing: 8px;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+#loader-text {
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  letter-spacing: 12px;
+  color: var(--white);
+  font-family: var(--font-ui);
+  font-weight: 400;
+}
+
+.loader-tagline {
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+/* ---- Progress ---- */
+.loader-progress-wrap {
+  position: absolute;
+  bottom: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(380px, 85vw);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#loader-bar-wrap {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: visible;
+}
+
+#loader-bar {
+  height: 1px;
+  width: 0%;
+  background: var(--gold);
+  transition: width 0.06s linear;
+  position: relative;
+}
+
+.loader-bar-glow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+.loader-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loader-status {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 3px;
+  color: var(--muted-dim);
+}
+
+#loader-percent {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: var(--gold);
+}
+
+/* ===================================================================
+   CINEMATIC SECTIONS
+=================================================================== */
+.cinematic-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 5vw;
+}
+
+.cinematic-word {
+  font-size: clamp(4rem, 14vw, 12rem);
+  font-family: var(--font-main);
+  letter-spacing: 4px;
+  line-height: 1.05;
+  color: var(--white);
+}
+
+.cinematic-paragraph {
+  font-size: clamp(1.4rem, 3.5vw, 3rem);
+  line-height: 1.7;
+  text-align: center;
+  color: var(--muted);
+}
+
+.highlight {
+  color: var(--white);
+  font-style: italic;
+}
+
+/* ===================================================================
+   HERO SECTION
+=================================================================== */
+#hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 5vw;
+  gap: 28px;
+  position: relative;
+}
+
+.hero-badge {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 5px;
+  color: var(--gold);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  padding: 8px 20px;
+  border-radius: 50px;
+}
+
+#hero-title {
+  font-size: clamp(3.5rem, 11vw, 10rem);
+  line-height: 1;
+  letter-spacing: 6px;
+  color: var(--white);
+}
+
+#hero-sub {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  color: var(--muted);
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-scroll-hint span {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 5px;
+  color: var(--muted-dim);
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.15);
+  }
+}
+
+/* ===================================================================
+   BUTTONS
+=================================================================== */
+.btn-primary {
+  background: var(--gold);
+  color: #080808;
+  border: none;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-family: var(--font-ui);
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+.btn-primary:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(240, 237, 230, 0.3);
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-family: var(--font-ui);
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition:
+    border-color 0.3s,
+    transform 0.3s;
+}
+.btn-secondary:hover {
+  border-color: var(--white);
+  transform: translateY(-1px);
+}
+
+/* ===================================================================
+   ASSISTANT SECTION
+=================================================================== */
+#assistant {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 5vw;
+  gap: 20px;
+  text-align: center;
+}
+
+.section-label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 6px;
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+#assistant h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  letter-spacing: 2px;
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 1.1rem;
+  max-width: 520px;
+}
+
+.chat-box {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.example-queries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.query-chip {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: none;
+}
+.query-chip:hover {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--white);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  padding: 20px;
+  resize: vertical;
+  min-height: 140px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+textarea:focus {
+  border-color: rgba(201, 168, 76, 0.5);
+}
+.input-row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.input-row textarea {
+  flex: 1;
+}
+
+.voice-btn {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  color: var(--white);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+  user-select: none;
+}
+.voice-btn:hover {
+  background: rgba(201, 168, 76, 0.25);
+  border-color: rgba(201, 168, 76, 0.7);
+  transform: scale(1.05);
+}
+.voice-btn.listening {
+  background: rgba(220, 50, 50, 0.2);
+  border-color: rgba(220, 50, 50, 0.7);
+  animation: pulse-mic 1.2s ease-in-out infinite;
+}
+@keyframes pulse-mic {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 50, 50, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(220, 50, 50, 0);
+  }
+}
+
+.voice-status {
+  font-size: 0.82rem;
+  color: rgba(201, 168, 76, 0.85);
+  min-height: 20px;
+  text-align: center;
+  font-family: var(--font-ui);
+}
+
+.ai-response {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 28px;
+  font-size: 0.97rem;
+  line-height: 1.85;
+  color: var(--white);
+  text-align: left;
+  display: none;
+}
+.ai-response .resp-loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+.ai-response .resp-loading::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(201, 168, 76, 0.3);
+  border-top-color: rgba(201, 168, 76, 0.9);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: block;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ai-response .resp-section {
+  margin-bottom: 18px;
+}
+.ai-response .resp-label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(201, 168, 76, 0.85);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.ai-response .resp-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ai-response .resp-list li {
+  padding: 4px 0 4px 18px;
+  position: relative;
+  color: rgba(255, 255, 255, 0.88);
+}
+.ai-response .resp-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: rgba(201, 168, 76, 0.7);
+}
+.ai-response .resp-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 18px 0;
+}
+.ai-response .resp-footer {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-style: italic;
+}
+.ai-response .resp-emergency {
+  background: rgba(220, 50, 50, 0.1);
+  border: 1px solid rgba(220, 50, 50, 0.3);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: rgba(255, 180, 180, 0.95);
+  font-size: 0.9rem;
+}
+.ai-response .resp-error {
+  color: rgba(255, 120, 120, 0.9);
+}
+
+/* ===================================================================
+   RIGHTS EXPLORER
+=================================================================== */
+#rights {
+  min-height: 100vh;
+  padding: 120px 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.rights-heading {
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.rights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 50px;
+}
+
+.rights-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.4s,
+    background 0.4s,
+    transform 0.4s;
+  overflow: hidden;
+}
+.rights-card:hover {
+  border-color: rgba(201, 168, 76, 0.35);
+  background: rgba(201, 168, 76, 0.04);
+  transform: translateY(-4px);
+}
+.rights-card.open {
+  border-color: rgba(201, 168, 76, 0.5);
+  background: rgba(201, 168, 76, 0.06);
+}
+
+.rights-number {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 5px;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.rights-icon {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+  display: block;
+}
+.rights-card h3 {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: var(--white);
+}
+.rights-preview {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* max-height is now set inline by JS to the element's real
+   scrollHeight when opened, so content of any length is shown in
+   full instead of being clipped at a guessed pixel ceiling. */
+.rights-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease;
+}
+
+.rights-detail p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.rights-detail ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.rights-detail ul li {
+  font-size: 0.88rem;
+  color: var(--white);
+  padding-left: 16px;
+  position: relative;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+.rights-detail ul li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+.rights-case {
+  border-left: 2px solid var(--gold);
+  padding-left: 14px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.case-label {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  letter-spacing: 4px;
+  color: var(--gold);
+}
+.case-name {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.rights-expand-btn {
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 18px;
+  transition: opacity 0.2s;
+}
+.rights-expand-btn:hover {
+  opacity: 0.7;
+}
+
+/* ===================================================================
+   HALL OF COURAGE — Museum Gallery
+=================================================================== */
+#courage {
+  min-height: 100vh;
+  padding: 100px 0 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.courage-museum-header {
+  text-align: center;
+  padding: 0 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 70px;
+}
+
+.courage-heading {
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.courage-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.courage-divider-line {
+  width: 80px;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+.courage-divider-diamond {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  opacity: 0.6;
+}
+
+/* ---- Gallery Floor ---- */
+.gallery-floor {
+  width: 100%;
+  position: relative;
+  padding: 40px 0 60px;
+}
+
+.gallery-ambient-light {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 400px;
+  background: radial-gradient(
+    ellipse 80% 100% at 50% 0%,
+    rgba(201, 168, 76, 0.04) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ---- Exhibit pedestals ---- */
+.gallery-exhibits {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 36px 28px;
+  padding: 0 5vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.exhibit-pedestal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.exhibit-pedestal:hover,
+.exhibit-pedestal:focus-visible {
+  transform: translateY(-6px);
+}
+
+/* Spotlight cone above the frame */
+.exhibit-spotlight {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 80px;
+  background: radial-gradient(
+    ellipse 60% 100% at 50% 100%,
+    rgba(201, 168, 76, 0.08) 0%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.exhibit-pedestal:hover .exhibit-spotlight,
+.exhibit-pedestal:focus-visible .exhibit-spotlight {
+  opacity: 1;
+}
+
+/* Portrait frame */
+.exhibit-frame {
+  position: relative;
+  width: 200px;
+  height: 260px;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  overflow: hidden;
+  background: #0a0906;
+  transition: border-color 0.4s;
+}
+
+.exhibit-pedestal:hover .exhibit-frame,
+.exhibit-pedestal:focus-visible .exhibit-frame {
+  border-color: rgba(201, 168, 76, 0.55);
+  box-shadow:
+    0 0 40px rgba(201, 168, 76, 0.1),
+    0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Ornamental corner brackets */
+.exhibit-frame-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--gold);
+  border-style: solid;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  z-index: var(--z-gallery-hover);
+}
+.exhibit-pedestal:hover .exhibit-frame-corner,
+.exhibit-pedestal:focus-visible .exhibit-frame-corner {
+  opacity: 1;
+}
+.exhibit-frame-corner.tl {
+  top: 6px;
+  left: 6px;
+  border-width: 1px 0 0 1px;
+}
+.exhibit-frame-corner.tr {
+  top: 6px;
+  right: 6px;
+  border-width: 1px 1px 0 0;
+}
+.exhibit-frame-corner.bl {
+  bottom: 6px;
+  left: 6px;
+  border-width: 0 0 1px 1px;
+}
+.exhibit-frame-corner.br {
+  bottom: 6px;
+  right: 6px;
+  border-width: 0 1px 1px 0;
+}
+
+.exhibit-portrait-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.exhibit-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  filter: sepia(0.2) brightness(0.8);
+  transition:
+    transform 0.6s ease,
+    filter 0.5s ease;
+}
+
+.exhibit-pedestal:hover .exhibit-portrait-img,
+.exhibit-pedestal:focus-visible .exhibit-portrait-img {
+  transform: scale(1.04);
+  filter: sepia(0.1) brightness(0.92);
+}
+
+/* Subtle veil at bottom */
+.exhibit-portrait-veil {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(transparent, rgba(6, 5, 3, 0.5));
+  pointer-events: none;
+}
+
+/* Label below frame */
+.exhibit-label {
+  width: 200px;
+  padding: 14px 8px 4px;
+  text-align: center;
+  border-top: 1px solid rgba(201, 168, 76, 0.15);
+  transition: border-color 0.3s;
+}
+.exhibit-pedestal:hover .exhibit-label,
+.exhibit-pedestal:focus-visible .exhibit-label {
+  border-color: rgba(201, 168, 76, 0.35);
+}
+
+.exhibit-years {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 4px;
+  color: var(--gold);
+  opacity: 0.7;
+  margin-bottom: 5px;
+}
+
+.exhibit-name {
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+.exhibit-title {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.exhibit-cta {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 3px;
+  color: var(--gold);
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+.exhibit-pedestal:hover .exhibit-cta,
+.exhibit-pedestal:focus-visible .exhibit-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Touch devices have no :hover — show the CTA at rest so the only
+   call-to-action text isn't hidden from mobile/tablet users. */
+@media (hover: none) and (pointer: coarse) {
+  .exhibit-cta {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
+}
+
+.exhibit-cta-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.6;
+}
+
+/* ===================================================================
+   DIGITAL EXHIBIT OVERLAY
+=================================================================== */
+.exhibit-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-exhibit-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.exhibit-overlay.active {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.exhibit-overlay-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 3, 2, 0.94);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.exhibit-overlay.active .exhibit-overlay-bg {
+  opacity: 1;
+}
+
+.exhibit-overlay-blur {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.exhibit-overlay.active .exhibit-overlay-blur {
+  opacity: 1;
+}
+
+/* ---- Exhibit Panel ----
+   Baseline opacity/transform now lives in CSS (not solely in a GSAP
+   tween), so if GSAP fails mid-session the panel still becomes
+   visible and usable the moment .active is toggled — GSAP's inline
+   styles simply override/animate on top of this when present. */
+.exhibit-panel {
+  position: relative;
+  width: min(1160px, 96vw);
+  height: min(88vh, 860px);
+  background: #0c0b09;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.94) translateY(24px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  z-index: 1;
+}
+
+.exhibit-overlay.active .exhibit-panel {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.exhibit-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+}
+.exhibit-close:hover {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.exhibit-panel-header {
+  padding: 18px 28px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.exhibit-museum-tag {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 5px;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+.exhibit-panel-divider {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.exhibit-panel-room {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 4px;
+  color: var(--muted-dim);
+}
+
+/* ---- Exhibit Body ---- */
+.exhibit-body {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* LEFT panel */
+.exhibit-left {
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 76, 0.2) transparent;
+  position: relative;
+}
+
+.exhibit-large-frame {
+  position: relative;
+  flex-shrink: 0;
+  height: 280px;
+  overflow: hidden;
+}
+
+.exhibit-large-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  filter: sepia(0.15) brightness(0.85);
+}
+
+.exhibit-frame-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(transparent, #0c0b09);
+  pointer-events: none;
+}
+
+.exhibit-bio-block {
+  padding: 24px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.exhibit-leader-years {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  letter-spacing: 4px;
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+.exhibit-leader-name {
+  font-size: 1.55rem;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+.exhibit-leader-title {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.exhibit-leader-bio {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.exhibit-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.exhibit-tag {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 2px;
+  color: var(--gold);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  padding: 3px 10px;
+  border-radius: 50px;
+}
+
+/* RIGHT panel */
+.exhibit-right {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.exhibit-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.exhibit-tab {
+  padding: 16px 28px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.exhibit-tab::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.exhibit-tab.active {
+  color: var(--white);
+}
+.exhibit-tab.active::after {
+  transform: scaleX(1);
+}
+.exhibit-tab:hover {
+  color: var(--white);
+}
+
+.exhibit-tab-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 28px;
+  display: none;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 76, 0.15) transparent;
+}
+
+.exhibit-tab-content.active {
+  display: block;
+}
+
+/* ---- Artifacts Grid ---- */
+.artifacts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.artifact-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  transition:
+    border-color 0.3s,
+    transform 0.3s;
+}
+
+.artifact-card:hover,
+.artifact-card:focus-visible {
+  border-color: rgba(201, 168, 76, 0.4);
+  transform: translateY(-3px) scale(1);
+}
+
+.artifact-card-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  filter: sepia(0.3) brightness(0.75);
+  transition:
+    filter 0.4s,
+    opacity 0.5s ease;
+  background: #0a0906;
+}
+
+.artifact-card:hover .artifact-card-img,
+.artifact-card:focus-visible .artifact-card-img {
+  filter: sepia(0.15) brightness(0.9);
+}
+
+/* ---- Image resolve/fade states ----
+   Applied by the image resolver to every routed <img>. While a path
+   is still being verified the image sits at 0 opacity (no flash of
+   a half-loaded/broken frame); once resolved+loaded it fades in. */
+.img-resolving {
+  opacity: 0;
+}
+.img-loaded {
+  opacity: 1;
+  animation: imgFadeIn 0.5s ease;
+}
+@keyframes imgFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Wrapper introduced for the gallery-count badge — purely structural,
+   carries no visual styling of its own beyond establishing a
+   positioning context for the badge. */
+.artifact-card-media {
+  position: relative;
+}
+
+.artifact-gallery-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(3, 3, 2, 0.75);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+  padding: 2px 7px;
+  border-radius: 50px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.artifact-card.has-gallery .artifact-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 60%, rgba(3, 3, 2, 0.35));
+  pointer-events: none;
+}
+
+/* Fallback presentation if an artifact image can't be resolved by
+   any path/extension/case variant — avoids a broken browser icon
+   distorting the fixed-aspect card. */
+.artifact-card.artifact-missing .artifact-card-img {
+  opacity: 0;
+}
+.artifact-card.artifact-missing .artifact-card-media {
+  display: flex;
+  flex-direction: column;
+}
+.artifact-card.artifact-missing .artifact-card-media::before {
+  content: "MUSEUM ARTIFACT";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  aspect-ratio: 1;
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+  color: var(--muted-dim);
+  background: #0a0906;
+}
+
+/* Generic "media missing" marker used on loader frames, gallery
+   pedestals, and timeline events when the resolver exhausts every
+   variant and falls back. Dims the frame slightly rather than
+   leaving an obviously-broken visual. */
+.media-missing .lframe-caption,
+.media-missing .exhibit-label {
+  opacity: 0.6;
+}
+
+.artifact-card-label {
+  padding: 10px;
+  text-align: center;
+}
+
+.artifact-card-name {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: var(--muted);
+  display: block;
+}
+
+/* ---- Timeline Track ---- */
+.timeline-track {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  padding-left: 28px;
+}
+
+.timeline-track::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--gold-dim) 10%,
+    var(--gold-dim) 90%,
+    transparent
+  );
+}
+
+.timeline-event {
+  display: flex;
+  gap: 20px;
+  padding: 18px 0;
+  position: relative;
+  opacity: 0;
+  transform: translateX(-16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.timeline-event:last-child {
+  border-bottom: none;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -32px;
+  top: 22px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--gold);
+  background: var(--bg);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.timeline-img {
+  width: 88px;
+  height: 66px;
+  object-fit: cover;
+  flex-shrink: 0;
+  filter: sepia(0.3) brightness(0.75);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.timeline-year {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.timeline-title {
+  font-size: 0.92rem;
+  color: var(--white);
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+}
+
+.timeline-story {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* ===================================================================
+   ARTIFACT LIGHTBOX
+=================================================================== */
+.artifact-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-artifact-lightbox);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.artifact-lightbox.active {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.artifact-lightbox-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 2, 1, 0.96);
+}
+
+.artifact-lightbox-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  max-width: 500px;
+  width: 90vw;
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.artifact-lightbox.active .artifact-lightbox-content {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.artifact-lightbox-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--muted);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+.artifact-lightbox-close:hover {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.artifact-lightbox-img-wrap {
+  width: 100%;
+  max-height: 360px;
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  overflow: hidden;
+  position: relative;
+}
+
+.artifact-lightbox-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #0a0906;
+  filter: sepia(0.1) brightness(0.9);
+  transition: opacity 0.35s ease;
+}
+
+.artifact-lightbox-img-wrap img.img-resolving {
+  opacity: 0;
+}
+
+/* ---- Carousel controls — only meaningful, and only shown, once a
+   gallery resolves to more than one image. main.js toggles these
+   via lightboxImages.length; CSS just provides the look. ---- */
+.artifact-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(3, 3, 2, 0.55);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  color: var(--white);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+  z-index: 2;
+}
+.artifact-lightbox-nav:hover {
+  background: rgba(201, 168, 76, 0.25);
+  border-color: rgba(201, 168, 76, 0.5);
+}
+.artifact-lightbox-nav.prev {
+  left: 10px;
+}
+.artifact-lightbox-nav.next {
+  right: 10px;
+}
+
+/* Hidden by default; main.js adds .has-gallery to the lightbox
+   content wrapper when more than one image resolves, which is what
+   actually reveals these — avoids depending on :has() support. */
+.artifact-lightbox-nav {
+  display: none;
+}
+.artifact-lightbox-content.has-gallery .artifact-lightbox-nav {
+  display: flex;
+}
+
+.artifact-lightbox-counter {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(3, 3, 2, 0.65);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  padding: 3px 9px;
+  border-radius: 50px;
+  z-index: 2;
+}
+
+.artifact-lightbox-thumbs {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 76, 0.3) transparent;
+}
+
+.artifact-lightbox-thumb {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #0a0906;
+  opacity: 0.6;
+  transition:
+    opacity 0.2s,
+    border-color 0.2s;
+}
+.artifact-lightbox-thumb:hover {
+  opacity: 0.85;
+}
+.artifact-lightbox-thumb.active {
+  opacity: 1;
+  border-color: var(--gold);
+}
+.artifact-lightbox-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: sepia(0.2) brightness(0.85);
+}
+
+.artifact-lightbox-info {
+  text-align: center;
+}
+
+.artifact-lightbox-tag {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 5px;
+  color: var(--gold);
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+
+.artifact-lightbox-info h3 {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.artifact-lightbox-info p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+/* ===================================================================
+   EMERGENCY RESOURCES
+=================================================================== */
+#emergency {
+  min-height: 80vh;
+  padding: 120px 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.emergency-heading {
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.emergency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 50px;
+}
+
+.emergency-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 32px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition:
+    border-color 0.3s,
+    transform 0.3s;
+}
+.emergency-card:hover {
+  border-color: rgba(201, 168, 76, 0.35);
+  transform: translateY(-4px);
+}
+
+.emergency-number {
+  font-size: 2.4rem;
+  font-family: var(--font-ui);
+  color: var(--gold);
+  letter-spacing: 3px;
+  line-height: 1;
+}
+.emergency-name {
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  font-family: var(--font-ui);
+  color: var(--white);
+}
+.emergency-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.emergency-call {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 10px 26px;
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  border-radius: 50px;
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-decoration: none;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+.emergency-call:hover {
+  background: var(--gold);
+  color: #080808;
+}
+
+/* ===================================================================
+   FOOTER
+=================================================================== */
+footer {
+  text-align: center;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-title {
+  font-size: 1.2rem;
+  letter-spacing: 8px;
+  font-family: var(--font-ui);
+}
+.footer-sub {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+.footer-copy {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 20px;
+}
+
+/* ===================================================================
+   RESPONSIVE
+=================================================================== */
+@media (max-width: 900px) {
+  .exhibit-body {
+    grid-template-columns: 1fr;
+  }
+  .exhibit-left {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    max-height: 420px; /* raised from 340px — gives the bio room to breathe before scrolling */
+  }
+  /* Scroll-presence cue: a soft gradient hint at the bottom of the
+     scrollable left column so it doesn't read as cut-off content. */
+  .exhibit-left::after {
+    content: "";
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    margin-top: -24px;
+    background: linear-gradient(transparent, #0c0b09);
+    pointer-events: none;
+    display: block;
+  }
+  .exhibit-large-frame {
+    height: 200px;
+  }
+  .exhibit-panel {
+    height: 92vh;
+  }
+  .gallery-exhibits {
+    gap: 24px 16px;
+  }
+  .exhibit-frame {
+    width: 165px;
+    height: 215px;
+  }
+  .exhibit-label {
+    width: 165px;
+  }
+
+  /* Tablet loader: explicit allowlist — only frames 5–9 shown.
+     Every property reset (top/bottom/left/right) on the same element
+     so nothing inherits a stale offset from the base desktop rule. */
+  .lframe {
+    display: none;
+  }
+  .lframe-5,
+  .lframe-6,
+  .lframe-7,
+  .lframe-8,
+  .lframe-9 {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Mobile loader: explicit allowlist — only frames 5 and 6.
+     top/bottom/left/right all reset together per element so the
+     desktop-rule offsets can never partially leak through. */
+  .lframe {
+    display: none;
+  }
+  .lframe-5,
+  .lframe-6 {
+    display: block;
+  }
+
+  .lframe-5 {
+    width: 110px;
+    height: 145px;
+    top: 10%;
+    right: 4%;
+    bottom: auto;
+    left: auto;
+  }
+  .lframe-6 {
+    width: 100px;
+    height: 130px;
+    top: auto;
+    bottom: 130px;
+    left: 4%;
+    right: auto;
+  }
+
+  .exhibit-frame {
+    width: 145px;
+    height: 190px;
+  }
+  .exhibit-label {
+    width: 145px;
+  }
+  .artifacts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Heavy GPU-cost filters reduced/removed on smaller screens, where
+   mid-range devices are most likely to struggle with full-strength
+   backdrop-filter blur stacked on top of scroll-triggered animation. */
+@media (max-width: 768px) {
+  .exhibit-overlay-blur {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+}
+
+@media (max-width: 480px) {
+  .exhibit-overlay-blur {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .exhibit-overlay-bg {
+    background: rgba(
+      3,
+      3,
+      2,
+      0.97
+    ); /* compensate for the lost blur with slightly higher opacity */
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* ===================================================================
+   ADDITIONS — append these rules to the end of css/style.css
+   They add positions for the two new loader portrait frames
+   (Patel = lframe-10, Sarojini = lframe-11) and make the timeline
+   images clickable / interactive inside the exhibit panel.
+=================================================================== */
+
+/* ---- New loader frames: Patel & Sarojini Naidu ---- */
+.lframe-10 {
+  width: 145px;
+  height: 190px;
+  top: 34%;
+  left: 7%;
+}
+.lframe-11 {
+  width: 130px;
+  height: 170px;
+  top: 32%;
+  right: 7%;
+}
+
+/* Tablet: show lframe-10 and lframe-11 alongside existing 5-9 */
+@media (max-width: 900px) {
+  .lframe-10,
+  .lframe-11 {
+    display: block;
+  }
+}
+
+/* Mobile: keep only two frames total — hide 10 and 11 */
+@media (max-width: 600px) {
+  .lframe-10,
+  .lframe-11 {
+    display: none;
+  }
+}
+
+/* ---- Timeline images — clickable, hover lift like artifact cards ----
+   The cursor and hover filter mirror the artifact card so the
+   interaction feels consistent across the whole exhibit panel. */
+.timeline-img {
+  cursor: pointer;
+  transition:
+    filter 0.35s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.timeline-img:hover,
+.timeline-img:focus-visible {
+  filter: sepia(0.1) brightness(0.95);
+  transform: scale(1.04);
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.2);
+  outline: none;
+}
+
+/* Focus ring for keyboard users */
+.timeline-img:focus-visible {
+  outline: 1px solid var(--gold-bright);
+  outline-offset: 2px;
+}
+/* ---- New loader frame: Subhas Chandra Bose ---- */
+.lframe-12 {
+  width: 140px;
+  height: 185px;
+  top: 48%;
+  left: 16%;
+}
+
+@media (max-width: 900px) {
+  .lframe-12 {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  .lframe-12 {
+    display: none;
+  }
+}

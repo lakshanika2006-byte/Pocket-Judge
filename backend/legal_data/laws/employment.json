@@ -1,0 +1,98 @@
+{
+  "category": "Employment",
+  "keywords": [
+    "salary",
+    "wages",
+    "fired",
+    "terminated",
+    "dismiss",
+    "layoff",
+    "employer",
+    "employee",
+    "job",
+    "work",
+    "office",
+    "labour",
+    "overtime",
+    "provident fund",
+    "pf",
+    "gratuity",
+    "bonus",
+    "leave",
+    "maternity",
+    "harassment",
+    "workplace",
+    "resignation",
+    "notice period",
+    "contract",
+    "appointment",
+    "promotion",
+    "discrimination",
+    "minimum wage",
+    "esi",
+    "esic",
+    "trade union"
+  ],
+  "fundamental_rights": [
+    "Article 19(1)(g) — Right to practise any profession or carry on any occupation, trade or business",
+    "Article 21 — Right to Life and Personal Liberty (includes right to livelihood)",
+    "Article 14 — Right to Equality before Law",
+    "Article 23 — Right against exploitation and forced labour"
+  ],
+  "laws": [
+    {
+      "name": "Industrial Disputes Act, 1947",
+      "sections": ["Section 2A", "Section 25F", "Section 25G", "Section 25N"],
+      "summary": "Governs termination, layoffs, and retrenchment. Employers must give notice and pay compensation.",
+      "remedy": "File complaint with Labour Commissioner or Labour Court"
+    },
+    {
+      "name": "Payment of Wages Act, 1936",
+      "sections": ["Section 3", "Section 4", "Section 5"],
+      "summary": "Ensures timely payment of wages without unauthorised deductions.",
+      "remedy": "File complaint with Payment of Wages Authority"
+    },
+    {
+      "name": "Minimum Wages Act, 1948",
+      "sections": ["Section 3", "Section 12", "Section 20"],
+      "summary": "Mandates minimum wages for all categories of employees. Violation is a criminal offence.",
+      "remedy": "Complain to the Inspector under the Act or Labour Commissioner"
+    },
+    {
+      "name": "Employees' Provident Funds and Miscellaneous Provisions Act, 1952",
+      "sections": ["Section 12", "Section 14"],
+      "summary": "Mandates employer PF contributions. Non-deposit is a criminal offence.",
+      "remedy": "Complain to EPFO Regional Office"
+    },
+    {
+      "name": "Maternity Benefit Act, 1961 (amended 2017)",
+      "sections": ["Section 4", "Section 5", "Section 12"],
+      "summary": "Guarantees 26 weeks paid maternity leave. Dismissal during maternity is illegal.",
+      "remedy": "File complaint with Inspector of Factories or Labour Commissioner"
+    },
+    {
+      "name": "POSH Act, 2013 (Sexual Harassment at Workplace)",
+      "sections": ["Section 2", "Section 4", "Section 9", "Section 11"],
+      "summary": "Every employer must establish an Internal Complaints Committee (ICC). Complaint within 3 months.",
+      "remedy": "File complaint with ICC or Local Complaints Committee (LCC)"
+    },
+    {
+      "name": "Bharatiya Nyaya Sanhita (BNS), 2023",
+      "sections": [
+        "Section 79 (outraging modesty)",
+        "Section 75-78 (sexual harassment)"
+      ],
+      "summary": "Criminal provisions for workplace harassment and assault.",
+      "remedy": "File FIR at nearest police station"
+    }
+  ],
+  "steps": [
+    "Collect all employment documents: appointment letter, payslips, PF statements, and written communications",
+    "Send a written grievance to HR or management via email (keep copies)",
+    "If unresolved in 30 days, file a complaint with the District Labour Commissioner",
+    "For unpaid wages or PF: approach the Payment of Wages Authority or EPFO Regional Office",
+    "For wrongful termination: file a claim with the Labour Court under Industrial Disputes Act",
+    "For harassment: file complaint with Internal Complaints Committee (ICC) within 3 months",
+    "Consider free legal aid from DLSA (District Legal Services Authority)"
+  ]
+}

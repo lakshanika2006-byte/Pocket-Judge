@@ -1,0 +1,107 @@
+{
+  "category": "Consumer Rights",
+  "keywords": [
+    "consumer",
+    "product",
+    "defective",
+    "refund",
+    "return",
+    "warranty",
+    "guarantee",
+    "complaint",
+    "service",
+    "shop",
+    "purchase",
+    "bought",
+    "cheated",
+    "fraud",
+    "online shopping",
+    "amazon",
+    "flipkart",
+    "restaurant",
+    "hospital",
+    "insurance",
+    "bank service",
+    "misleading",
+    "advertisement",
+    "billing",
+    "overcharged",
+    "expired",
+    "food safety",
+    "medical negligence",
+    "builder",
+    "flat",
+    "rera",
+    "real estate",
+    "electricity",
+    "telecom",
+    "jio",
+    "airtel",
+    "unfair trade practice"
+  ],
+  "fundamental_rights": [
+    "Article 21 — Right to Life (includes right to health and safe products)",
+    "Article 19(1)(g) — Right to trade (balanced with consumer protection)",
+    "Article 14 — Right to Equality (consumers treated fairly)"
+  ],
+  "laws": [
+    {
+      "name": "Consumer Protection Act, 2019",
+      "sections": [
+        "Section 2(7) (definition of consumer)",
+        "Section 2(34) (product liability)",
+        "Section 2(11) (deficiency in service)",
+        "Section 35 (complaint to District Commission — up to Rs 1 crore)",
+        "Section 47 (State Commission — Rs 1 crore to Rs 10 crore)",
+        "Section 58 (National Commission — above Rs 10 crore)",
+        "Section 88 (penalties for misleading advertisements)"
+      ],
+      "summary": "Provides three-tier dispute resolution: District, State, and National Consumer Commission. Covers defective goods, deficient services, unfair trade practices, and product liability.",
+      "remedy": "File complaint at e-Daakhil portal (edaakhil.nic.in) — online and free"
+    },
+    {
+      "name": "Real Estate (Regulation and Development) Act, 2016 (RERA)",
+      "sections": [
+        "Section 18 (return of amount + interest for delays)",
+        "Section 19 (buyer rights)",
+        "Section 31 (complaint to RERA Authority)"
+      ],
+      "summary": "Protects homebuyers from builder fraud, delays, and false promises.",
+      "remedy": "File complaint at your state's RERA website"
+    },
+    {
+      "name": "Food Safety and Standards Act, 2006 (FSSAI)",
+      "sections": [
+        "Section 59 (adulterated food)",
+        "Section 63 (unlicensed food business)"
+      ],
+      "summary": "Covers food quality, adulteration, and safety standards.",
+      "remedy": "Complain to FSSAI at fssai.gov.in or local Food Safety Officer"
+    },
+    {
+      "name": "Insurance Regulatory and Development Authority Act, 1999",
+      "sections": ["IRDA Guidelines on claim settlement"],
+      "summary": "Insurance companies must settle claims within 30 days. Rejection must be in writing.",
+      "remedy": "File complaint with IRDAI at igms.irda.gov.in or Insurance Ombudsman"
+    },
+    {
+      "name": "Bharatiya Nyaya Sanhita (BNS) / IPC",
+      "sections": [
+        "Section 318 BNS (cheating — IPC 420)",
+        "Section 316 (criminal breach of trust)"
+      ],
+      "summary": "Criminal remedies for fraud and cheating by sellers.",
+      "remedy": "File FIR at nearest police station"
+    }
+  ],
+  "steps": [
+    "Send a formal written complaint to the seller/service provider — give 30 days to respond",
+    "If no response or unsatisfactory reply: file online complaint at consumerhelpline.gov.in or call 1915",
+    "For amounts up to Rs 1 crore: file at District Consumer Disputes Redressal Commission",
+    "Use e-Daakhil portal (edaakhil.nic.in) — filing fee is minimal (Rs 100-500)",
+    "For builder disputes: file at state RERA authority",
+    "For banking/insurance disputes: approach respective Ombudsman",
+    "For food safety: complain to local Food Safety Officer or FSSAI",
+    "Preserve: bill/invoice, product photos, all communications, bank statements, warranty card"
+  ]
+}

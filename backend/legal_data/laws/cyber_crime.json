@@ -1,0 +1,91 @@
+{
+  "category": "Cyber Crime",
+  "keywords": [
+    "hacked",
+    "hack",
+    "cyber",
+    "online fraud",
+    "phishing",
+    "scam",
+    "bank fraud",
+    "otp",
+    "upi",
+    "password",
+    "account",
+    "stolen",
+    "identity theft",
+    "social media",
+    "fake profile",
+    "morphed",
+    "deepfake",
+    "sextortion",
+    "cyberbullying",
+    "threat online",
+    "ransomware",
+    "data breach",
+    "dark web",
+    "cryptocurrency fraud",
+    "investment fraud",
+    "digital",
+    "internet",
+    "email fraud",
+    "whatsapp",
+    "impersonation",
+    "stalking online"
+  ],
+  "fundamental_rights": [
+    "Article 21 — Right to Privacy (recognised by Supreme Court in Puttaswamy judgment 2017)",
+    "Article 19(1)(a) — Right to Freedom of Speech (includes protection from online harassment)",
+    "Article 14 — Right to Equality before Law"
+  ],
+  "laws": [
+    {
+      "name": "Information Technology Act, 2000",
+      "sections": [
+        "Section 43 (unauthorised access, data theft)",
+        "Section 66 (computer-related offences — 3 years imprisonment)",
+        "Section 66C (identity theft — 3 years + Rs 1 lakh fine)",
+        "Section 66D (cheating by impersonation using computer)",
+        "Section 66E (violation of privacy — publishing private images)",
+        "Section 67 (publishing obscene material online)",
+        "Section 67A (publishing sexually explicit material)",
+        "Section 67B (child pornography — 7 years)"
+      ],
+      "summary": "Primary cyber law. Covers hacking, identity theft, online fraud, and privacy violations.",
+      "remedy": "File FIR at Cyber Crime Police Station or report at cybercrime.gov.in"
+    },
+    {
+      "name": "Bharatiya Nyaya Sanhita (BNS), 2023",
+      "sections": [
+        "Section 318 (cheating — replaces IPC 420)",
+        "Section 316 (criminal breach of trust)",
+        "Section 308 (extortion)",
+        "Section 352 (criminal intimidation)",
+        "Section 78 (stalking — including cyberstalking)"
+      ],
+      "summary": "Criminal provisions for online fraud, extortion, stalking, and cheating.",
+      "remedy": "File FIR at local police station"
+    },
+    {
+      "name": "Payment and Settlement Systems Act, 2007",
+      "sections": ["Section 25"],
+      "summary": "Governs UPI, NEFT, RTGS fraud. RBI directs banks to resolve disputes.",
+      "remedy": "Report to bank immediately, then RBI Banking Ombudsman"
+    },
+    {
+      "name": "Personal Data Protection Bill / IT (Intermediary Guidelines) Rules 2021",
+      "sections": ["Rule 3", "Rule 4"],
+      "summary": "Platforms must remove unlawful content within 36 hours of notice.",
+      "remedy": "Report to platform's Grievance Officer and NCW if involving women"
+    }
+  ],
+  "steps": [
+    "IMMEDIATELY: Change all passwords and enable two-factor authentication",
+    "For financial fraud: call your bank's 24x7 helpline within 3 hours — report on cybercrime.gov.in or call 1930",
+    "Take screenshots and preserve all evidence (chats, emails, transaction IDs) before they disappear",
+    "File a complaint at cybercrime.gov.in (National Cyber Crime Reporting Portal) — available 24/7",
+    "Alternatively, file FIR at the nearest Cyber Crime Police Station",
+    "For social media abuse: report to the platform AND file complaint at NCRP portal",
+    "If financial loss occurred: also file complaint with your bank's fraud department and RBI Ombudsman"
+  ]
+}

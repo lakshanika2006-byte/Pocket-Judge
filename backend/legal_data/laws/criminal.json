@@ -1,0 +1,112 @@
+{
+  "category": "Criminal",
+  "keywords": [
+    "fir",
+    "police",
+    "arrested",
+    "arrest",
+    "bail",
+    "complaint",
+    "crime",
+    "murder",
+    "assault",
+    "robbery",
+    "theft",
+    "stolen",
+    "cheating",
+    "fraud",
+    "extortion",
+    "blackmail",
+    "kidnap",
+    "rape",
+    "sexual assault",
+    "accused",
+    "custody",
+    "magistrate",
+    "court",
+    "case",
+    "charges",
+    "witness",
+    "evidence",
+    "acquittal",
+    "conviction",
+    "sentence",
+    "parole",
+    "appeal",
+    "wrongful arrest",
+    "police brutality",
+    "lockup",
+    "station house officer",
+    "suo motu",
+    "chargesheet",
+    "anticipatory bail",
+    "regular bail",
+    "challan",
+    "remand"
+  ],
+  "fundamental_rights": [
+    "Article 20 — Protection against arbitrary arrest (no ex post facto laws, no double jeopardy)",
+    "Article 21 — Right to Life and Personal Liberty (includes right to fair trial and legal aid)",
+    "Article 22 — Protection against arbitrary arrest (right to know grounds, right to lawyer, 24-hour magistrate rule)",
+    "Article 39A — Right to free legal aid for accused who cannot afford a lawyer"
+  ],
+  "laws": [
+    {
+      "name": "Bharatiya Nagarik Suraksha Sanhita (BNSS), 2023 (replaces CrPC)",
+      "sections": [
+        "Section 35 (arrest without warrant by police — grounds required)",
+        "Section 47 (right of arrested person to inform family)",
+        "Section 52 (examination of arrested person by doctor)",
+        "Section 187 (production before Magistrate within 24 hours)",
+        "Section 480/482 (anticipatory bail)",
+        "Section 483/484 (regular bail)"
+      ],
+      "summary": "Governs criminal procedure from FIR to trial. Key right: must be produced before Magistrate within 24 hours. You have a right to a lawyer.",
+      "remedy": "File petition in Sessions Court for bail; approach High Court for writ if rights violated"
+    },
+    {
+      "name": "Bharatiya Nyaya Sanhita (BNS), 2023 (replaces IPC)",
+      "sections": [
+        "Section 103 (murder — life imprisonment or death penalty)",
+        "Section 115 (voluntarily causing hurt)",
+        "Section 303 (theft)",
+        "Section 308 (extortion)",
+        "Section 318 (cheating)",
+        "Section 63-69 (rape and sexual offences)",
+        "Section 74-78 (outraging modesty, stalking)"
+      ],
+      "summary": "New criminal code replacing IPC. Defines crimes and punishments.",
+      "remedy": "File FIR at police station; police must register a cognisable offence"
+    },
+    {
+      "name": "Bharatiya Sakshya Adhiniyam (BSA), 2023 (replaces Indian Evidence Act)",
+      "sections": [
+        "Section 9 (facts in issue)",
+        "Section 65 (electronic evidence)"
+      ],
+      "summary": "Governs what evidence is admissible in court. Digital/electronic evidence is now explicitly included.",
+      "remedy": "Preserve all digital evidence; get seizure memo from police"
+    },
+    {
+      "name": "Code of Criminal Procedure (CrPC) / BNSS",
+      "sections": [
+        "Section 154/173 BNSS (FIR)",
+        "Section 156 (police investigation)",
+        "Section 190 (cognisance by Magistrate)"
+      ],
+      "summary": "Police MUST register FIR for cognisable offences. If they refuse, approach Superintendent of Police or Magistrate.",
+      "remedy": "If FIR refused: send complaint to SP by post or approach Magistrate under Section 175 BNSS"
+    }
+  ],
+  "steps": [
+    "If arrested: immediately ask to be informed of the grounds of arrest (your right under Article 22)",
+    "Demand your right to inform a family member or friend — police must allow this (BNSS Section 47)",
+    "You must be produced before a Magistrate within 24 hours — if not, it is illegal detention",
+    "Request a lawyer immediately — you have the right to free legal aid (NALSA 15100)",
+    "To file an FIR: go to the police station in whose jurisdiction the crime occurred",
+    "If police refuse to register FIR: send a written complaint to the Superintendent of Police by registered post",
+    "If FIR still not registered: file a complaint before the Magistrate under Section 175 BNSS",
+    "For bail: file application in Sessions Court (for serious offences) or before Magistrate (for minor offences)",
+    "For anticipatory bail (before arrest): file in Sessions Court or High Court"
+  ]
+}

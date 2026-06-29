@@ -1,0 +1,79 @@
+{
+  "id": "ambedkar",
+  "name": "Dr. B. R. Ambedkar",
+  "title": "Architect of the Indian Constitution",
+  "theme": "justice",
+
+  "portrait": "/assets/images/courage/ambedkar/portrait/portrait.webp",
+
+  "textures": {
+    "paper": "/assets/images/textures/paper_dark.jpg",
+    "dust": "/assets/images/textures/dusty.webp",
+    "vignette": "/assets/images/textures/vignette.webp",
+    "wall": "/assets/images/textures/wall.webp"
+  },
+
+  "details": {
+    "constitution_book": "/assets/images/courage/ambedkar/details/constitution_book.webp",
+    "letter": "/assets/images/courage/ambedkar/details/letter.jpg"
+  },
+
+  "timeline": [
+    {
+      "id": "childhood",
+      "year": "1891",
+      "title": "Early Life",
+      "image": "/assets/images/courage/ambedkar/timeline/01-childhood.webp",
+      "story": "Born into a society of deep inequality, he experienced discrimination that shaped his lifelong mission for justice."
+    },
+    {
+      "id": "childhood-2",
+      "year": "",
+      "title": "",
+      "image": "/assets/images/courage/ambedkar/timeline/02-childhood.webp",
+      "story": ""
+    },
+    {
+      "id": "childhood-3",
+      "year": "",
+      "title": "",
+      "image": "/assets/images/courage/ambedkar/timeline/03-childhood.webp",
+      "story": ""
+    },
+    {
+      "id": "columbia",
+      "year": "1913–1916",
+      "title": "Columbia University",
+      "image": "/assets/images/courage/ambedkar/timeline/04-columbia.webp",
+      "story": "Studied economics and law in the United States, where he developed his vision for social reform."
+    },
+    {
+      "id": "london",
+      "year": "1920s",
+      "title": "London School of Economics",
+      "image": "/assets/images/courage/ambedkar/timeline/05-Ambedkar London School Economics.jpg",
+      "story": "Advanced his research in economics and law, becoming one of the most educated reformers of his time."
+    },
+    {
+      "id": "drafting-1",
+      "year": "1947",
+      "title": "Constitution Drafting",
+      "image": "/assets/images/courage/ambedkar/timeline/06-constitution-drafting1.webp",
+      "story": "As Chairman of the Drafting Committee, he led the creation of the Constitution of India."
+    },
+    {
+      "id": "drafting-2",
+      "year": "1948",
+      "title": "Constitution Drafting",
+      "image": "/assets/images/courage/ambedkar/timeline/07-constitution-drafting2.webp",
+      "story": "He continued refining the Constitution, ensuring justice, equality, and liberty for every citizen."
+    },
+    {
+      "id": "constitution",
+      "year": "1950",
+      "title": "Constitution of India",
+      "image": "/assets/images/courage/ambedkar/timeline/08-constitution of India draft.jpg",
+      "story": "The Constitution of India came into effect, laying the foundation for the world's largest democracy."
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "category": "Property & Housing",
+  "keywords": [
+    "property",
+    "land",
+    "house",
+    "flat",
+    "rent",
+    "tenant",
+    "landlord",
+    "eviction",
+    "notice",
+    "lease",
+    "agreement",
+    "dispute",
+    "encroachment",
+    "illegal",
+    "builder",
+    "possession",
+    "registry",
+    "sale deed",
+    "mutation",
+    "khata",
+    "patta",
+    "title",
+    "ownership",
+    "neighbour",
+    "boundary",
+    "trespass",
+    "ancestral",
+    "inheritance",
+    "succession",
+    "partition",
+    "benami",
+    "mortgage",
+    "loan default",
+    "emi",
+    "bank"
+  ],
+  "fundamental_rights": [
+    "Article 300A — Right to Property (constitutional right, cannot be deprived without legal authority)",
+    "Article 21 — Right to Life (includes right to shelter)",
+    "Article 14 — Right to Equality before Law"
+  ],
+  "laws": [
+    {
+      "name": "Transfer of Property Act, 1882",
+      "sections": [
+        "Section 54 (sale of property)",
+        "Section 105 (lease)",
+        "Section 118 (exchange)"
+      ],
+      "summary": "Governs sale, mortgage, gift, lease, and exchange of property in India.",
+      "remedy": "Civil suit in District Court for property disputes"
+    },
+    {
+      "name": "Registration Act, 1908",
+      "sections": [
+        "Section 17 (compulsory registration of sale deeds)",
+        "Section 49 (effect of non-registration)"
+      ],
+      "summary": "All property transactions above Rs 100 must be registered. Unregistered documents cannot be used as evidence of title.",
+      "remedy": "Register all property documents at Sub-Registrar Office"
+    },
+    {
+      "name": "Specific Relief Act, 1963",
+      "sections": [
+        "Section 10 (specific performance of contract)",
+        "Section 34 (declaratory decree)"
+      ],
+      "summary": "Court can order specific performance of a property sale agreement if the seller backs out.",
+      "remedy": "File suit for specific performance in Civil Court"
+    },
+    {
+      "name": "Real Estate (Regulation and Development) Act, 2016 (RERA)",
+      "sections": [
+        "Section 3 (registration of projects)",
+        "Section 18 (refund for delays)",
+        "Section 31 (complaint mechanism)"
+      ],
+      "summary": "Protects buyers from builder delays, fraud, and misleading claims.",
+      "remedy": "File complaint at state RERA authority online"
+    },
+    {
+      "name": "Rent Control Acts (State-specific)",
+      "sections": ["Standard Rent", "Eviction Grounds", "Tenant Protections"],
+      "summary": "State laws protect tenants from arbitrary eviction and regulate rent increases.",
+      "remedy": "Approach Rent Controller or Civil Court"
+    },
+    {
+      "name": "Hindu Succession Act, 1956 (amended 2005)",
+      "sections": [
+        "Section 6 (daughters as coparceners)",
+        "Section 8 (general rules of succession)"
+      ],
+      "summary": "Daughters have equal rights to ancestral property as sons (Supreme Court: Vineeta Sharma 2020).",
+      "remedy": "File partition suit in Civil Court if denied share"
+    },
+    {
+      "name": "Benami Transactions (Prohibition) Act, 1988 (amended 2016)",
+      "sections": [
+        "Section 3 (prohibition)",
+        "Section 24 (attachment of benami property)"
+      ],
+      "summary": "Property held in another person's name to avoid law is illegal. Imprisonment up to 7 years.",
+      "remedy": "Report to Income Tax Authority (Benami Prohibition Unit)"
+    }
+  ],
+  "steps": [
+    "Obtain copies of all property documents: sale deed, title documents, property tax receipts, and survey records",
+    "For disputes about title or ownership: consult a property lawyer and file a civil suit in the appropriate Civil Court",
+    "For encroachment: file a police complaint and approach the local revenue authority (Tehsildar/Collector)",
+    "For builder fraud or delays: file complaint at state RERA website — free and online",
+    "For illegal eviction: approach Rent Controller Court immediately and seek stay order",
+    "For succession disputes: file partition suit in Family Court or Civil Court",
+    "Get a legal title search from the Sub-Registrar Office to verify ownership history"
+  ]
+}

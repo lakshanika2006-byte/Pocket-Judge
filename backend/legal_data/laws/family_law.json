@@ -1,0 +1,108 @@
+{
+  "category": "Family Law",
+  "keywords": [
+    "divorce",
+    "marriage",
+    "custody",
+    "child",
+    "maintenance",
+    "alimony",
+    "separation",
+    "annulment",
+    "dowry",
+    "streedhan",
+    "muslim",
+    "hindu",
+    "christian",
+    "marriage certificate",
+    "restitution",
+    "conjugal rights",
+    "adoption",
+    "guardianship",
+    "inheritance",
+    "succession",
+    "will",
+    "cruelty",
+    "desertion",
+    "impotency",
+    "bigamy",
+    "second marriage",
+    "family court",
+    "domestic",
+    "in-laws",
+    "parents",
+    "support"
+  ],
+  "fundamental_rights": [
+    "Article 21 — Right to Life with dignity (includes right against cruelty in marriage)",
+    "Article 14 — Right to Equality (applies to matrimonial proceedings)",
+    "Article 15 — No discrimination on grounds of religion/sex in personal laws subject to reform"
+  ],
+  "laws": [
+    {
+      "name": "Hindu Marriage Act, 1955",
+      "sections": [
+        "Section 5 (conditions for valid Hindu marriage)",
+        "Section 9 (restitution of conjugal rights)",
+        "Section 13 (grounds for divorce — adultery, cruelty, desertion etc.)",
+        "Section 13B (divorce by mutual consent — 1 year separation minimum)",
+        "Section 24 (maintenance during proceedings)",
+        "Section 25 (permanent alimony and maintenance)",
+        "Section 26 (custody of children)"
+      ],
+      "summary": "Governs marriage, divorce, maintenance, and child custody for Hindus, Sikhs, Buddhists, and Jains.",
+      "remedy": "File petition in Family Court"
+    },
+    {
+      "name": "Special Marriage Act, 1954",
+      "sections": [
+        "Section 4 (inter-religion marriage)",
+        "Section 27 (divorce grounds)"
+      ],
+      "summary": "Allows marriage between any two persons regardless of religion. Also provides divorce provisions.",
+      "remedy": "File petition in Family Court or District Court"
+    },
+    {
+      "name": "Muslim Women (Protection of Rights on Divorce) Act, 2019",
+      "sections": [
+        "Section 3 (triple talaq void and illegal)",
+        "Section 4 (imprisonment up to 3 years)"
+      ],
+      "summary": "Triple talaq (instant divorce) is unconstitutional and a criminal offence. Husband can be imprisoned.",
+      "remedy": "File complaint with police or Magistrate"
+    },
+    {
+      "name": "Guardians and Wards Act, 1890 / Hindu Minority and Guardianship Act, 1956",
+      "sections": [
+        "Section 6 HMGA (natural guardianship)",
+        "Section 17 GWA (welfare of minor paramount)"
+      ],
+      "summary": "Welfare of the child is the paramount consideration in custody disputes.",
+      "remedy": "File custody petition in Family Court"
+    },
+    {
+      "name": "Bharatiya Nyaya Sanhita (BNS) / IPC",
+      "sections": [
+        "Section 494 IPC / BNS (bigamy)",
+        "Section 85 BNS (cruelty by husband)"
+      ],
+      "summary": "Bigamy is a criminal offence. Cruelty in marriage is punishable with imprisonment.",
+      "remedy": "File FIR for bigamy or cruelty"
+    },
+    {
+      "name": "Protection of Women from Domestic Violence Act, 2005",
+      "sections": ["Section 18-22 (protection, residence, monetary relief)"],
+      "summary": "Provides civil remedies in addition to criminal provisions for married women facing violence.",
+      "remedy": "Approach Protection Officer or file application in Magistrate Court"
+    }
+  ],
+  "steps": [
+    "For divorce: consult a family lawyer; if mutual consent — both parties can file jointly after 1 year separation",
+    "For maintenance: file application under Section 125 CrPC / BNSS in Family Court — interim maintenance can be ordered within 60 days",
+    "For child custody: file petition in Family Court — the court considers the child's welfare above all else",
+    "For domestic violence: contact Protection Officer and file application in Magistrate Court",
+    "Gather evidence: marriage certificate, children's documents, financial records, bank statements",
+    "For free legal aid: contact DLSA (District Legal Services Authority) or NALSA 15100",
+    "Consider mediation — Family Courts often refer parties to mediation centers first"
+  ]
+}

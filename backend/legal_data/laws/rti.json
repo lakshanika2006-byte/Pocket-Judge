@@ -1,0 +1,62 @@
+{
+  "category": "RTI",
+  "keywords": [
+    "rti",
+    "right to information",
+    "information",
+    "government",
+    "public authority",
+    "transparency",
+    "corruption",
+    "document",
+    "record",
+    "application",
+    "public information officer",
+    "pio",
+    "cic",
+    "sic",
+    "appeal",
+    "refused",
+    "denial",
+    "30 days",
+    "public record",
+    "disclosure",
+    "government scheme",
+    "tender",
+    "file",
+    "certificate",
+    "caste certificate",
+    "income certificate",
+    "ration card",
+    "passport",
+    "status"
+  ],
+  "fundamental_rights": [
+    "Article 19(1)(a) — Right to Freedom of Speech and Expression (includes right to information)",
+    "Article 21 — Right to Life (includes right to know about government decisions affecting life)"
+  ],
+  "laws": [
+    {
+      "name": "Right to Information Act, 2005",
+      "sections": [
+        "Section 6 (how to file RTI application)",
+        "Section 7 (reply within 30 days; 48 hours if life/liberty at stake)",
+        "Section 8 (exemptions — national security, personal privacy etc.)",
+        "Section 11 (third-party information)",
+        "Section 19 (first appeal to senior officer within 30 days; second appeal to CIC/SIC)",
+        "Section 20 (penalty Rs 250/day up to Rs 25,000 for PIO's failure)"
+      ],
+      "summary": "Every citizen can request information from any public authority. Information must be provided within 30 days. Fee is Rs 10. BPL applicants: free of charge.",
+      "remedy": "File RTI with PIO; appeal to First Appellate Authority; second appeal to CIC/SIC"
+    }
+  ],
+  "steps": [
+    "Identify the Public Information Officer (PIO) of the relevant government department",
+    "Write a simple application: your name, address, the specific information you want, and application fee (Rs 10 — by postal order or court fee stamp; free for BPL)",
+    "Submit by post, in person, or online at rtionline.gov.in (for Central government bodies)",
+    "PIO must respond within 30 days (48 hours if the matter involves life or liberty)",
+    "If no reply or unsatisfactory: file First Appeal to the First Appellate Authority within 30 days",
+    "If still unsatisfied: file Second Appeal to State Information Commission (SIC) or Central Information Commission (CIC) at cic.gov.in",
+    "PIO can be penalised Rs 250 per day (max Rs 25,000) for unjustified delays"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "neera-arya",
+  "name": "Neera Arya",
+  "title": "Freedom Fighter and INA Spy",
+  "theme": "espionage",
+
+  "portrait": "/assets/images/courage/neera-arya/portrait/portrait.webp",
+
+  "timeline": [
+    {
+      "id": "childhood",
+      "year": "1902",
+      "title": "Early Life",
+      "image": "/assets/images/courage/neera-arya/timeline/01-childhood.webp",
+      "story": "Born in present-day Uttar Pradesh, Neera Arya later became one of the remarkable women associated with India's freedom struggle."
+    },
+    {
+      "id": "ina",
+      "year": "1940s",
+      "title": "Joining the INA",
+      "image": "/assets/images/courage/neera-arya/timeline/02-ina.webp",
+      "story": "She joined the Indian National Army and worked in support of the movement led by Netaji Subhas Chandra Bose."
+    },
+    {
+      "id": "spy",
+      "year": "1940s",
+      "title": "Secret Missions",
+      "image": "/assets/images/courage/neera-arya/timeline/03-spy.webp",
+      "story": "Accounts describe her carrying out dangerous intelligence-related missions for the INA during the freedom movement."
+    },
+    {
+      "id": "sacrifice",
+      "year": "1940s",
+      "title": "Sacrifice",
+      "image": "/assets/images/courage/neera-arya/timeline/04-sacrifice.webp",
+      "story": "She endured imprisonment and hardship in service of the struggle for India's independence."
+    },
+    {
+      "id": "legacy",
+      "year": "1998 →",
+      "title": "Legacy",
+      "image": "/assets/images/courage/neera-arya/timeline/05-legacy.webp",
+      "story": "Neera Arya is remembered by many as a courageous participant in the freedom movement, though historical documentation of some accounts about her life is limited."
+    }
+  ]
+}

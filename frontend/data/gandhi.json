@@ -1,0 +1,67 @@
+{
+  "id": "gandhi",
+  "name": "Mahatma Gandhi",
+  "title": "Father of the Nation",
+  "theme": "peace",
+
+  "portrait": "/assets/images/courage/gandhi/portrait/portrait.webp",
+
+  "timeline": [
+    {
+      "id": "childhood",
+      "year": "1869",
+      "title": "Early Life",
+      "image": "/assets/images/courage/gandhi/timeline/01-childhood.webp",
+      "story": "Born in Porbandar, Gandhi’s early life shaped his moral foundation and simplicity."
+    },
+    {
+      "id": "london",
+      "year": "1888-1891",
+      "title": "London Education",
+      "image": "/assets/images/courage/gandhi/timeline/02-london.webp",
+      "story": "Studied law in London, where he was first exposed to global ideas of justice."
+    },
+    {
+      "id": "south_africa",
+      "year": "1893-1914",
+      "title": "South Africa Struggle",
+      "image": "/assets/images/courage/gandhi/timeline/03-south-africa.webp",
+      "story": "Faced racial discrimination, leading to the development of Satyagraha philosophy."
+    },
+    {
+      "id": "non_cooperation",
+      "year": "1920",
+      "title": "Non-Cooperation Movement",
+      "image": "/assets/images/courage/gandhi/timeline/04-non-cooperation.webp",
+      "story": "Mobilized millions in a peaceful resistance against British rule."
+    },
+    {
+      "id": "salt_march",
+      "year": "1930",
+      "title": "Salt March",
+      "image": "/assets/images/courage/gandhi/timeline/05-salt-march.webp",
+      "story": "A 240-mile march that became a global symbol of nonviolent resistance."
+    },
+    {
+      "id": "charkha",
+      "year": "1930s",
+      "title": "Self Reliance",
+      "image": "/assets/images/courage/gandhi/timeline/06-charkha.webp",
+      "story": "Promoted self-sufficiency through spinning wheel and local production."
+    },
+    {
+      "id": "independence",
+      "year": "1947",
+      "title": "Independence",
+      "image": "/assets/images/courage/gandhi/timeline/07-independence.webp",
+      "story": "India achieved independence through a long struggle of non-violence."
+    },
+    {
+      "id": "legacy",
+      "year": "1948 →",
+      "title": "Legacy",
+      "image": "/assets/images/courage/gandhi/timeline/08-legacy.webp",
+      "story": "His philosophy continues to inspire global movements for peace."
+    }
+  ]
+}

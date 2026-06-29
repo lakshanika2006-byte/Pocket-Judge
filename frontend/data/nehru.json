@@ -1,0 +1,97 @@
+{
+  "id": "nehru",
+  "name": "Jawaharlal Nehru",
+  "title": "First Prime Minister of India",
+  "theme": "nation_building",
+
+  "portrait": "/assets/images/courage/nehru/details/portrait/portrait.webp",
+
+  "textures": {
+    "dust": "/assets/images/courage/nehru/details/textures/dust.webp",
+    "paper": "/assets/images/courage/nehru/details/textures/paper_dark.jpg",
+    "vignette": "/assets/images/courage/nehru/details/textures/vignette.webp",
+    "wall": "/assets/images/courage/nehru/details/textures/wall.webp"
+  },
+
+  "details": {
+    "rose": {
+      "image": "/assets/images/courage/nehru/details/rose.webp",
+      "title": "Red Rose",
+      "description": "The red rose, Nehru's signature emblem, reflected his affection for children, elegance, and belief that compassion should accompany leadership."
+    },
+    "flag": {
+      "image": "/assets/images/courage/nehru/details/flag.webp",
+      "title": "Indian National Flag",
+      "description": "Represents the birth of independent India and Nehru's role in guiding the nation through its formative years as its first Prime Minister."
+    },
+    "desk": {
+      "image": "/assets/images/courage/nehru/details/desk.webp",
+      "title": "Prime Minister's Desk",
+      "description": "Symbolizes the countless decisions, policies, and plans that laid the foundation for modern India's democratic institutions, scientific progress, and economic development."
+    },
+    "bust": {
+      "image": "/assets/images/courage/nehru/details/bust.webp",
+      "title": "Bronze Bust",
+      "description": "A commemorative sculpture honoring Jawaharlal Nehru's enduring contribution to nation-building, democracy, education, and scientific advancement."
+    }
+  },
+
+  "timeline": [
+    {
+      "id": "childhood",
+      "year": "1889",
+      "title": "Early Life",
+      "image": "/assets/images/courage/nehru/details/timeline/01-childhood.webp.jpg",
+      "story": "Born in Allahabad into the influential Nehru family, he developed an early curiosity about history, science, and world affairs under private tutors."
+    },
+    {
+      "id": "cambridge",
+      "year": "1907–1910",
+      "title": "Education in England",
+      "image": "/assets/images/courage/nehru/details/timeline/02-cambridge.webp",
+      "story": "Studied Natural Sciences at Trinity College, Cambridge, before qualifying as a barrister in London, where liberal democratic ideals deeply influenced his thinking."
+    },
+    {
+      "id": "congress",
+      "year": "1919–1929",
+      "title": "Freedom Movement",
+      "image": "/assets/images/courage/nehru/details/timeline/03-congress.webp",
+      "story": "Joined the Indian National Congress and emerged as one of the leading voices of India's independence movement alongside Mahatma Gandhi."
+    },
+    {
+      "id": "prison",
+      "year": "1930–1945",
+      "title": "Years of Imprisonment",
+      "image": "/assets/images/courage/nehru/details/timeline/04-prison.webp",
+      "story": "Spent nearly nine years in British prisons, where he wrote influential works including 'The Discovery of India' and reflected on India's future."
+    },
+    {
+      "id": "independence",
+      "year": "1947",
+      "title": "Tryst with Destiny",
+      "image": "/assets/images/courage/nehru/details/timeline/05-independence-speech.webp",
+      "story": "On the eve of India's independence, he delivered the historic 'Tryst with Destiny' speech, marking the birth of a free and sovereign nation."
+    },
+    {
+      "id": "prime_minister",
+      "year": "1947–1964",
+      "title": "First Prime Minister",
+      "image": "/assets/images/courage/nehru/details/timeline/06-prime-minister.webp",
+      "story": "Served as India's first Prime Minister, establishing parliamentary democracy and shaping the nation's domestic and foreign policies."
+    },
+    {
+      "id": "nation_building",
+      "year": "1950s",
+      "title": "Building Modern India",
+      "image": "/assets/images/courage/nehru/details/timeline/07-nation-building.webp",
+      "story": "Championed industrialization, scientific research, higher education, and large infrastructure projects, envisioning India as a modern, self-reliant nation."
+    },
+    {
+      "id": "legacy",
+      "year": "1964 →",
+      "title": "Legacy",
+      "image": "/assets/images/courage/nehru/details/timeline/08-legacy.webp",
+      "story": "Remembered as one of independent India's principal architects, whose vision for democracy, secularism, education, and scientific progress continues to influence the nation."
+    }
+  ]
+}

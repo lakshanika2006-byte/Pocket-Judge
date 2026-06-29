@@ -1,0 +1,97 @@
+{
+  "Employment": [
+    "Appointment letter / offer letter",
+    "Employment contract",
+    "Payslips for last 6 months",
+    "Bank statements showing salary credits",
+    "PF account statement (check EPFO portal: passbook.epfindia.gov.in)",
+    "Any written communications — emails, WhatsApp messages, letters",
+    "Termination letter (if applicable)",
+    "Any performance reviews or show-cause notices",
+    "Witness details (colleagues who can support your claim)",
+    "Attendance records or ID card"
+  ],
+  "Cyber Crime": [
+    "Screenshots of the fraudulent messages, emails, or social media posts (with timestamp visible)",
+    "Bank transaction receipts / UPI transaction IDs and screenshots",
+    "Fraudulent website URLs or app names",
+    "Contact numbers and email IDs used by fraudster",
+    "Original phishing email (forward as attachment to preserve headers)",
+    "Any OTPs or passwords that were compromised",
+    "Device details (phone/computer model) where the fraud occurred",
+    "Your bank passbook / statements showing debit",
+    "Social media account usernames of fake profiles"
+  ],
+  "Property & Housing": [
+    "Original sale deed / title deed",
+    "Property tax receipts (last 3 years)",
+    "Khata / Patta / Mutation records",
+    "Survey / land records from revenue department",
+    "Builder-buyer agreement (for flat disputes)",
+    "Allotment letter and possession letter",
+    "Photographs of the property and any encroachment",
+    "All payment receipts (cheques, bank transfers)",
+    "Correspondence with landlord / builder",
+    "Ration card / utility bills as proof of residence"
+  ],
+  "Domestic Violence": [
+    "Medical reports and hospital records for injuries",
+    "Photographs of injuries (dated)",
+    "Threatening messages, emails, or voice recordings",
+    "Witness names and contact details (neighbours, family)",
+    "Any previous police complaints or court orders",
+    "Financial documents (joint accounts, property papers)",
+    "Streedhan list (jewellery, gifts received at marriage)",
+    "Marriage certificate and children's birth certificates",
+    "Any written complaints to police station"
+  ],
+  "Consumer Rights": [
+    "Original purchase receipt / bill / invoice",
+    "Product packaging and batch number (if applicable)",
+    "Warranty / guarantee card",
+    "Photographs or videos of defective product",
+    "Email / chat exchanges with company customer care",
+    "Delivery documents / order confirmation (for online purchases)",
+    "Bank / credit card statements showing payment",
+    "Any promises or offers made in advertisement (screenshot / printout)",
+    "Medical reports if health was affected by defective product"
+  ],
+  "Criminal": [
+    "FIR copy (you have the right to get a free copy)",
+    "Medical examination report (for assault cases)",
+    "Photographs of injuries, scene, or stolen items",
+    "CCTV footage (request preservation immediately)",
+    "Witness names and contact details",
+    "Any physical evidence (preserve without tampering)",
+    "Written communications related to the offence",
+    "Seizure memo from police of any items seized",
+    "Bail application documents"
+  ],
+  "Family Law": [
+    "Marriage certificate / Nikahnama",
+    "Children's birth certificates",
+    "Income proof of both parties (salary slips, ITR)",
+    "Bank statements (at least 6 months)",
+    "Property ownership documents",
+    "Streedhan list and receipts",
+    "Photographs and videos related to cruelty (if applicable)",
+    "Medical reports for domestic violence injuries",
+    "Any written communications (emails, messages)"
+  ],
+  "RTI": [
+    "Copy of your RTI application (signed and dated)",
+    "Postal receipt / acknowledgement from PIO",
+    "Any reply received from PIO",
+    "Grounds for the information request (for appeal)",
+    "Documents showing you are affected by the matter"
+  ],
+  "General": [
+    "All relevant original documents and their photocopies",
+    "Written record of all incidents (dates, times, locations, witnesses)",
+    "All correspondence related to the matter (emails, letters, messages)",
+    "Names and contact details of witnesses",
+    "Any photographic or video evidence",
+    "Bank statements or financial records if money is involved",
+    "Any official receipts or acknowledgements"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "category": "Education",
+  "keywords": [
+    "school",
+    "college",
+    "university",
+    "fees",
+    "admission",
+    "degree",
+    "marks",
+    "result",
+    "scholarship",
+    "student",
+    "teacher",
+    "principal",
+    "professor",
+    "ugc",
+    "aicte",
+    "exam",
+    "certificate",
+    "discrimination",
+    "ragging",
+    "anti-ragging",
+    "hostel",
+    "reservation",
+    "sc",
+    "st",
+    "obc",
+    "ews",
+    "scholarship",
+    "stipend",
+    "research",
+    "plagiarism",
+    "distance education",
+    "online course",
+    "fake degree",
+    "affiliation"
+  ],
+  "fundamental_rights": [
+    "Article 21A — Right to Free and Compulsory Education (children 6-14 years)",
+    "Article 15(3) — State may make special provisions for children (reservation in education)",
+    "Article 29-30 — Cultural and Educational Rights (minority institutions)",
+    "Article 14 — Right to Equality (no arbitrary discrimination in admissions)"
+  ],
+  "laws": [
+    {
+      "name": "Right to Education Act, 2009 (RTE)",
+      "sections": [
+        "Section 3 (free and compulsory education up to age 14)",
+        "Section 12 (25% seats in private schools for EWS/disadvantaged)",
+        "Section 17 (prohibition of physical punishment and mental harassment)",
+        "Section 32 (grievance redressal mechanism)"
+      ],
+      "summary": "Every child aged 6-14 has a right to free and compulsory education. Private schools must reserve 25% seats for EWS children.",
+      "remedy": "Complaint to District Education Officer; appeal to State Commission for Protection of Child Rights"
+    },
+    {
+      "name": "UGC Act, 1956 and UGC Regulations",
+      "sections": [
+        "UGC Anti-Ragging Regulations, 2009",
+        "UGC (Prevention, Prohibition and Redressal of Sexual Harassment) Regulations, 2015"
+      ],
+      "summary": "UGC regulates universities and colleges. Anti-ragging is mandatory. Every institution must have an ICC for sexual harassment.",
+      "remedy": "Complaint to UGC at ugc.ac.in; call UGC anti-ragging helpline 1800-180-5522"
+    },
+    {
+      "name": "Prohibition of Ragging in Educational Institutions",
+      "sections": [
+        "UGC Regulations 2009",
+        "Supreme Court Guidelines in UoI v. Raghavan 2009"
+      ],
+      "summary": "Ragging is a criminal and civil offence. Institutions must expel ragging perpetrators. Mandatory anti-ragging committee.",
+      "remedy": "Call anti-ragging helpline: 1800-180-5522; file complaint at antiragging.in; FIR at police station"
+    },
+    {
+      "name": "Bharatiya Nyaya Sanhita (BNS) / IPC",
+      "sections": [
+        "Section 115 BNS (voluntarily causing hurt — for physical ragging)",
+        "Section 351 BNS (criminal intimidation)"
+      ],
+      "summary": "Ragging involving physical assault or threats can result in criminal prosecution.",
+      "remedy": "File FIR at nearest police station"
+    },
+    {
+      "name": "Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1989",
+      "sections": [
+        "Section 3 (atrocities against SC/ST)",
+        "Section 15A (rights of victims)"
+      ],
+      "summary": "Caste-based discrimination in educational institutions is a criminal offence.",
+      "remedy": "File complaint with police; approach SC/ST Commission"
+    }
+  ],
+  "steps": [
+    "Document all incidents: dates, witnesses, emails, notice board photos",
+    "For ragging: call anti-ragging helpline 1800-180-5522 (24x7) or file at antiragging.in",
+    "For fee disputes: write to the institution's grievance officer first (get acknowledgement)",
+    "If unresolved: approach the University's Grievance Cell, then UGC/AICTE/State Education Department",
+    "For RTE violations: complain to District Education Officer or State Commission for Protection of Child Rights",
+    "For caste-based discrimination: file complaint with SC/ST Commission and local police",
+    "For sexual harassment: file complaint with Internal Complaints Committee (ICC) within 3 months",
+    "For free legal aid: NALSA 15100 or District Legal Services Authority"
+  ]
+}

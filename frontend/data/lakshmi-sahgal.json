@@ -1,0 +1,66 @@
+{
+  "id": "lakshmi-sahgal",
+  "name": "Captain Lakshmi Sahgal",
+  "title": "Commander of the Rani of Jhansi Regiment",
+  "theme": "armed_resistance",
+
+  "portrait": "/assets/images/courage/lakshmi-sahgal/portrait/portrait.webp",
+
+  "details": {
+    "ina_flag": {
+      "image": "/assets/images/courage/lakshmi-sahgal/details/ina-flag.webp",
+      "title": "INA Flag",
+      "description": "The flag of the Indian National Army symbolized the courage, sacrifice, and determination of those who fought for India's freedom under Netaji Subhas Chandra Bose."
+    },
+    "political_document": {
+      "image": "/assets/images/courage/lakshmi-sahgal/details/political-document.webp",
+      "title": "Political Document",
+      "description": "Represents Captain Lakshmi Sahgal's commitment to India's independence, leadership in the Indian National Army, and her vision of a free and united nation."
+    }
+  },
+
+  "timeline": [
+    {
+      "id": "childhood",
+      "year": "1914",
+      "title": "Early Life",
+      "image": "/assets/images/courage/lakshmi-sahgal/timeline/01-childhood.webp",
+      "story": "Born as Lakshmi Swaminathan in Madras, she studied medicine and developed a deep commitment to serving society."
+    },
+    {
+      "id": "doctor",
+      "year": "1940",
+      "title": "Doctor in Singapore",
+      "image": "/assets/images/courage/lakshmi-sahgal/timeline/02-singapore.webp",
+      "story": "While practicing medicine in Singapore, she provided care to the Indian community and came into contact with the Indian independence movement."
+    },
+    {
+      "id": "ina",
+      "year": "1943",
+      "title": "Joining the Indian National Army",
+      "image": "/assets/images/courage/lakshmi-sahgal/timeline/03-ina.webp",
+      "story": "Inspired by Netaji Subhas Chandra Bose, she joined the Indian National Army to contribute directly to India's struggle for independence."
+    },
+    {
+      "id": "rani_regiment",
+      "year": "1943",
+      "title": "Rani of Jhansi Regiment",
+      "image": "/assets/images/courage/lakshmi-sahgal/timeline/04-rani-regiment.webp",
+      "story": "She became the commander of the Rani of Jhansi Regiment, one of the world's first all-women combat units, inspiring women to take an active role in the freedom movement."
+    },
+    {
+      "id": "leadership",
+      "year": "1944",
+      "title": "Leadership and Service",
+      "image": "/assets/images/courage/lakshmi-sahgal/timeline/05-leadership.webp",
+      "story": "She led and trained women soldiers with discipline and determination while continuing to serve as a physician whenever needed."
+    },
+    {
+      "id": "legacy",
+      "year": "2012 →",
+      "title": "Legacy",
+      "image": "/assets/images/courage/lakshmi-sahgal/timeline/06-legacy.webp",
+      "story": "Captain Lakshmi Sahgal is remembered as a fearless freedom fighter, compassionate doctor, and an enduring symbol of women's leadership in India's independence movement."
+    }
+  ]
+}

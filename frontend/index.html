@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Pocket Judge</title>
+    <script>
+      document.documentElement.classList.remove("no-js");
+      document.documentElement.classList.add("has-js");
+    </script>
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Preload loader portrait images -->
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/courage/ambedkar/potrait/portrait.webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/courage/gandhi/potrait/portrait.webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/courage/nehru/potrait/portrait.webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/courage/lakshmi-sahgal/potrait/portrait.webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/courage/Neera Arya/potrait/potrait.webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/courage/sardar-vallabhbhai-patel/potrait/portrait.webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/courage/Sarojini Naidu/potrait/portrait.webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/courage/subhas-chandra-bose/potrait/portrait.webp"
+      fetchpriority="high"
+    />
+  </head>
+  <body>
+    <!-- ============================================================
+         CINEMATIC LOADING SCREEN
+    ============================================================ -->
+    <div id="loader">
+      <div class="loader-bg"></div>
+      <div class="loader-vignette"></div>
+      <canvas id="dust-canvas"></canvas>
+
+      <div class="loader-frames" id="loaderFrames">
+        <div class="lframe lframe-1" data-label="Ambedkar">
+          <img
+            src="assets/images/courage/ambedkar/potrait/portrait.webp"
+            alt="Dr. B. R. Ambedkar"
+            onerror="this.src = 'assets/images/fallback/portrait-fallback.jpg'"
+          />
+          <div class="lframe-caption">DR. B. R. AMBEDKAR</div>
+        </div>
+        <div class="lframe lframe-2" data-label="Gandhi">
+          <img
+            src="assets/images/courage/gandhi/potrait/portrait.webp"
+            alt="Mahatma Gandhi"
+            onerror="this.src = 'assets/images/fallback/portrait-fallback.jpg'"
+          />
+          <div class="lframe-caption">MAHATMA GANDHI</div>
+        </div>
+        <div class="lframe lframe-3" data-label="Nehru">
+          <img
+            src="assets/images/courage/nehru/potrait/portrait.webp"
+            alt="Jawaharlal Nehru"
+            onerror="this.src = 'assets/images/fallback/portrait-fallback.jpg'"
+          />
+          <div class="lframe-caption">JAWAHARLAL NEHRU</div>
+        </div>
+        <div class="lframe lframe-4" data-label="Lakshmi">
+          <img
+            src="assets/images/courage/lakshmi-sahgal/potrait/portrait.webp"
+            alt="Captain Lakshmi Sahgal"
+            onerror="this.src = 'assets/images/fallback/portrait-fallback.jpg'"
+          />
+          <div class="lframe-caption">CAPTAIN LAKSHMI SAHGAL</div>
+        </div>
+        <div class="lframe lframe-5" data-label="Neera">
+          <img
+            src="assets/images/courage/Neera Arya/potrait/potrait.webp"
+            alt="Neera Arya"
+            onerror="this.src = 'assets/images/fallback/portrait-fallback.jpg'"
+          />
+          <div class="lframe-caption">NEERA ARYA</div>
+        </div>
+        <!-- Artifact frames -->
+        <div class="lframe lframe-6 lframe-artifact">
+          <img
+            src="assets/images/courage/ambedkar/details/constitution_book.webp"
+            alt="Constitution"
+            onerror="this.src = 'assets/images/fallback/artifact-fallback.jpg'"
+          />
+          <div class="lframe-caption">THE CONSTITUTION</div>
+        </div>
+        <div class="lframe lframe-7 lframe-artifact">
+          <img
+            src="assets/images/courage/gandhi/details/charkha.webp"
+            alt="Charkha"
+            onerror="this.src = 'assets/images/fallback/artifact-fallback.jpg'"
+          />
+          <div class="lframe-caption">CHARKHA</div>
+        </div>
+        <div class="lframe lframe-8 lframe-artifact">
+          <img
+            src="assets/images/courage/lakshmi-sahgal/details/ina-flag.webp"
+            alt="INA Flag"
+            onerror="this.src = 'assets/images/fallback/artifact-fallback.jpg'"
+          />
+          <div class="lframe-caption">INA FLAG</div>
+        </div>
+        <div class="lframe lframe-9 lframe-artifact">
+          <img
+            src="assets/images/courage/Neera Arya/details/compass.webp"
+            alt="Compass"
+            onerror="this.src = 'assets/images/fallback/artifact-fallback.jpg'"
+          />
+          <div class="lframe-caption">COMPASS</div>
+        </div>
+        <!-- New loader frames for Patel and Sarojini -->
+        <div class="lframe lframe-10" data-label="Patel">
+          <img
+            src="assets/images/courage/sardar-vallabhbhai-patel/potrait/portrait.webp"
+            alt="Sardar Vallabhbhai Patel"
+            onerror="this.src = 'assets/images/fallback/portrait-fallback.jpg'"
+          />
+          <div class="lframe-caption">SARDAR PATEL</div>
+        </div>
+        <div class="lframe lframe-12" data-label="Bose">
+          <img
+            src="assets/images/courage/subhas-chandra-bose/potrait/portrait.webp"
+            alt="Subhas Chandra Bose"
+            onerror="this.src = 'assets/images/fallback/portrait-fallback.jpg'"
+          />
+          <div class="lframe-caption">SUBHAS CHANDRA BOSE</div>
+        </div>
+        <div class="lframe lframe-11" data-label="Sarojini">
+          <img
+            src="assets/images/courage/Sarojini Naidu/potrait/portrait.webp"
+            alt="Sarojini Naidu"
+            onerror="this.src = 'assets/images/fallback/portrait-fallback.jpg'"
+          />
+          <div class="lframe-caption">SAROJINI NAIDU</div>
+        </div>
+      </div>
+
+      <div class="loader-museum-label">DIGITAL MUSEUM OF INDIA</div>
+
+      <div class="loader-identity">
+        <div class="loader-title-wrap">
+          <div class="loader-eyebrow">ENTERING</div>
+          <div id="loader-text">THE POCKET JUDGE</div>
+          <div class="loader-tagline">
+            A Museum of Fundamental Rights &amp; Freedom Fighters
+          </div>
+        </div>
+      </div>
+
+      <div class="loader-progress-wrap">
+        <div id="loader-bar-wrap">
+          <div id="loader-bar"></div>
+          <div class="loader-bar-glow"></div>
+        </div>
+        <div class="loader-progress-labels">
+          <span class="loader-status" id="loaderStatus"
+            >INITIALISING EXHIBIT</span
+          >
+          <span id="loader-percent">0%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         MAIN CONTENT
+         ORDER: Cinematic hero → Everyday People's Rights (word sections)
+                → Pocket Judge Intro (hero) → Ask a Legal Question (assistant)
+                → Six Pillars (rights) → Hall of Courage → AI Response
+                → Help is One Call Away (emergency) → Footer
+    ============================================================ -->
+    <main id="main-content">
+      <!-- 1. CINEMATIC SCROLL — EVERYDAY PEOPLE'S RIGHTS -->
+      <section class="cinematic-section" id="word1">
+        <div class="cinematic-word">JUSTICE.</div>
+      </section>
+
+      <section class="cinematic-section" id="word2">
+        <div class="cinematic-word">DELAYED.</div>
+      </section>
+
+      <section class="cinematic-section" id="word3">
+        <div class="cinematic-word">IS JUSTICE<br />DENIED.</div>
+      </section>
+
+      <section class="cinematic-section" id="word4">
+        <div class="cinematic-paragraph">
+          Every day, people suffer not because<br />
+          rights do not exist —<br />
+          <span class="highlight">but because they do not know them.</span>
+        </div>
+      </section>
+
+      <!-- 2. HERO SECTION — Pocket Judge Introduction -->
+      <section id="hero">
+        <div class="hero-badge">AI — POWERED LEGAL ASSISTANCE</div>
+        <h1 id="hero-title">THE POCKET<br />JUDGE</h1>
+        <p id="hero-sub">Justice begins when people know their rights.</p>
+        <div class="hero-buttons">
+          <button class="btn-primary" id="askBtn">Ask a Legal Question</button>
+          <button class="btn-secondary" id="exploreBtn">
+            Explore Your Rights
+          </button>
+        </div>
+        <div class="hero-scroll-hint">
+          <span>SCROLL</span>
+          <div class="hero-scroll-line"></div>
+        </div>
+      </section>
+
+      <!-- 3. SIX PILLARS OF FREEDOM — Fundamental Rights -->
+      <section id="rights">
+        <div class="section-label">FUNDAMENTAL RIGHTS</div>
+        <h2 class="rights-heading">The six pillars<br />of your freedom.</h2>
+        <p class="section-sub rights-sub">
+          Articles 12–35 of the Indian Constitution guarantee these rights to
+          every citizen.
+        </p>
+        <div class="rights-grid">
+          <div class="rights-card" data-right="equality">
+            <div class="rights-card-inner">
+              <div class="rights-number">14 — 18</div>
+              <div class="rights-icon">⚖️</div>
+              <h3>Right to Equality</h3>
+              <p class="rights-preview">
+                No discrimination. Equal protection under law.
+              </p>
+              <div class="rights-detail">
+                <p>
+                  The State shall not deny to any person equality before the law
+                  or equal protection of the laws within the territory of India.
+                </p>
+                <ul>
+                  <li>
+                    Prohibition of discrimination on grounds of religion, race,
+                    caste, sex or place of birth
+                  </li>
+                  <li>
+                    Equality of opportunity in matters of public employment
+                  </li>
+                  <li>Abolition of untouchability</li>
+                  <li>Abolition of titles</li>
+                </ul>
+                <div class="rights-case">
+                  <span class="case-label">LANDMARK CASE</span>
+                  <span class="case-name"
+                    >Indra Sawhney v. Union of India, 1992 — Established limits
+                    on reservations at 50%</span
+                  >
+                </div>
+              </div>
+              <button class="rights-expand-btn">Know Your Rights →</button>
+            </div>
+          </div>
+
+          <div class="rights-card" data-right="freedom">
+            <div class="rights-card-inner">
+              <div class="rights-number">19 — 22</div>
+              <div class="rights-icon">🕊️</div>
+              <h3>Right to Freedom</h3>
+              <p class="rights-preview">
+                Speech, expression, movement, and personal liberty.
+              </p>
+              <div class="rights-detail">
+                <p>
+                  Every citizen has the right to freedom of speech and
+                  expression, assembly, association, movement, residence, and
+                  profession.
+                </p>
+                <ul>
+                  <li>Freedom of speech and expression</li>
+                  <li>Right to assemble peacefully without arms</li>
+                  <li>Protection against arbitrary arrest and detention</li>
+                  <li>Right to life and personal liberty (Article 21)</li>
+                </ul>
+                <div class="rights-case">
+                  <span class="case-label">LANDMARK CASE</span>
+                  <span class="case-name"
+                    >Maneka Gandhi v. Union of India, 1978 — Expanded Article 21
+                    to include the right to live with dignity</span
+                  >
+                </div>
+              </div>
+              <button class="rights-expand-btn">Know Your Rights →</button>
+            </div>
+          </div>
+
+          <div class="rights-card" data-right="exploitation">
+            <div class="rights-card-inner">
+              <div class="rights-number">23 — 24</div>
+              <div class="rights-icon">🛡️</div>
+              <h3>Right Against Exploitation</h3>
+              <p class="rights-preview">
+                Protection from forced labour and child labour.
+              </p>
+              <div class="rights-detail">
+                <p>
+                  The Constitution prohibits all forms of forced labour, human
+                  trafficking, and employment of children in hazardous
+                  occupations.
+                </p>
+                <ul>
+                  <li>
+                    Prohibition of traffic in human beings and forced labour
+                  </li>
+                  <li>
+                    Prohibition of employment of children below 14 years in
+                    factories
+                  </li>
+                  <li>Protection from bonded labour</li>
+                  <li>Right to fair wages</li>
+                </ul>
+                <div class="rights-case">
+                  <span class="case-label">LANDMARK CASE</span>
+                  <span class="case-name"
+                    >People's Union for Democratic Rights v. Union of India,
+                    1982 — Defined forced labour broadly</span
+                  >
+                </div>
+              </div>
+              <button class="rights-expand-btn">Know Your Rights →</button>
+            </div>
+          </div>
+
+          <div class="rights-card" data-right="religion">
+            <div class="rights-card-inner">
+              <div class="rights-number">25 — 28</div>
+              <div class="rights-icon">🕌</div>
+              <h3>Freedom of Religion</h3>
+              <p class="rights-preview">
+                Freedom of conscience and free practice of religion.
+              </p>
+              <div class="rights-detail">
+                <p>
+                  All persons are equally entitled to freedom of conscience and
+                  the right to freely profess, practise and propagate religion.
+                </p>
+                <ul>
+                  <li>
+                    Right to freely profess, practise and propagate religion
+                  </li>
+                  <li>Freedom to manage religious affairs</li>
+                  <li>No religious instruction in State-funded institutions</li>
+                  <li>Freedom from religious taxation</li>
+                </ul>
+                <div class="rights-case">
+                  <span class="case-label">LANDMARK CASE</span>
+                  <span class="case-name"
+                    >S.R. Bommai v. Union of India, 1994 — Upheld secularism as
+                    a basic structure</span
+                  >
+                </div>
+              </div>
+              <button class="rights-expand-btn">Know Your Rights →</button>
+            </div>
+          </div>
+
+          <div class="rights-card" data-right="culture">
+            <div class="rights-card-inner">
+              <div class="rights-number">29 — 30</div>
+              <div class="rights-icon">📚</div>
+              <h3>Cultural &amp; Educational Rights</h3>
+              <p class="rights-preview">
+                Protection of language, script, and culture.
+              </p>
+              <div class="rights-detail">
+                <p>
+                  Every section of citizens with a distinct language, script or
+                  culture shall have the right to conserve the same.
+                </p>
+                <ul>
+                  <li>
+                    Right of minorities to conserve their language and culture
+                  </li>
+                  <li>
+                    Right of minorities to establish and administer educational
+                    institutions
+                  </li>
+                  <li>Protection against discrimination in admissions</li>
+                  <li>
+                    State shall not discriminate in granting aid to minority
+                    institutions
+                  </li>
+                </ul>
+                <div class="rights-case">
+                  <span class="case-label">LANDMARK CASE</span>
+                  <span class="case-name"
+                    >T.M.A. Pai Foundation v. State of Karnataka, 2002 — Defined
+                    minority educational rights</span
+                  >
+                </div>
+              </div>
+              <button class="rights-expand-btn">Know Your Rights →</button>
+            </div>
+          </div>
+
+          <div class="rights-card" data-right="remedies">
+            <div class="rights-card-inner">
+              <div class="rights-number">Article 32</div>
+              <div class="rights-icon">🏛️</div>
+              <h3>Constitutional Remedies</h3>
+              <p class="rights-preview">
+                The right to enforce your rights. The heart of the Constitution.
+              </p>
+              <div class="rights-detail">
+                <p>
+                  Dr. Ambedkar called Article 32 the heart and soul of the
+                  Constitution. It gives you the right to move the Supreme Court
+                  directly if your rights are violated.
+                </p>
+                <ul>
+                  <li>
+                    Habeas Corpus — produce the body, challenge illegal
+                    detention
+                  </li>
+                  <li>Mandamus — court orders authority to perform its duty</li>
+                  <li>
+                    Prohibition — prevents lower courts from exceeding
+                    jurisdiction
+                  </li>
+                  <li>
+                    Certiorari — higher court reviews lower court decisions
+                  </li>
+                </ul>
+                <div class="rights-case">
+                  <span class="case-label">LANDMARK CASE</span>
+                  <span class="case-name"
+                    >Kesavananda Bharati v. State of Kerala, 1973 — Basic
+                    structure doctrine protecting fundamental rights</span
+                  >
+                </div>
+              </div>
+              <button class="rights-expand-btn">Know Your Rights →</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. SIX PILLARS OF FREEDOM — Fundamental Rights -->
+
+      <!-- 5. HALL OF COURAGE — Museum Gallery -->
+      <section id="courage">
+        <div class="courage-museum-header">
+          <div class="section-label">HALL OF COURAGE</div>
+          <h2 class="courage-heading">They refused<br />to remain silent.</h2>
+          <p class="section-sub courage-sub">
+            Every right we exercise today was carried on someone's shoulders.
+          </p>
+          <div class="courage-divider">
+            <div class="courage-divider-line"></div>
+            <div class="courage-divider-diamond"></div>
+            <div class="courage-divider-line"></div>
+          </div>
+        </div>
+
+        <div class="gallery-floor" id="galleryFloor">
+          <div class="gallery-ambient-light"></div>
+
+          <div class="gallery-exhibits" id="galleryExhibits">
+            <!-- Ambedkar -->
+            <div class="exhibit-pedestal" data-leader="ambedkar">
+              <div class="exhibit-spotlight"></div>
+              <div class="exhibit-frame">
+                <div class="exhibit-frame-corner tl"></div>
+                <div class="exhibit-frame-corner tr"></div>
+                <div class="exhibit-frame-corner bl"></div>
+                <div class="exhibit-frame-corner br"></div>
+                <div class="exhibit-portrait-wrap">
+                  <img
+                    class="exhibit-portrait-img"
+                    src="assets/images/courage/ambedkar/potrait/portrait.webp"
+                    alt="Dr. B. R. Ambedkar"
+                    loading="lazy"
+                    onerror="
+                      this.src = 'assets/images/fallback/portrait-fallback.jpg'
+                    "
+                  />
+                  <div class="exhibit-portrait-veil"></div>
+                </div>
+              </div>
+              <div class="exhibit-label">
+                <div class="exhibit-years">1891 — 1956</div>
+                <div class="exhibit-name">Dr. B. R. Ambedkar</div>
+                <div class="exhibit-title">
+                  Architect of the Indian Constitution
+                </div>
+              </div>
+              <div class="exhibit-cta">
+                <span class="exhibit-cta-dot"></span>
+                <span>View Exhibit</span>
+                <span class="exhibit-cta-dot"></span>
+              </div>
+            </div>
+
+            <!-- Gandhi -->
+            <div class="exhibit-pedestal" data-leader="gandhi">
+              <div class="exhibit-spotlight"></div>
+              <div class="exhibit-frame">
+                <div class="exhibit-frame-corner tl"></div>
+                <div class="exhibit-frame-corner tr"></div>
+                <div class="exhibit-frame-corner bl"></div>
+                <div class="exhibit-frame-corner br"></div>
+                <div class="exhibit-portrait-wrap">
+                  <img
+                    class="exhibit-portrait-img"
+                    src="assets/images/courage/gandhi/potrait/portrait.webp"
+                    alt="Mahatma Gandhi"
+                    loading="lazy"
+                    onerror="
+                      this.src = 'assets/images/fallback/portrait-fallback.jpg'
+                    "
+                  />
+                  <div class="exhibit-portrait-veil"></div>
+                </div>
+              </div>
+              <div class="exhibit-label">
+                <div class="exhibit-years">1869 — 1948</div>
+                <div class="exhibit-name">Mahatma Gandhi</div>
+                <div class="exhibit-title">Father of the Nation</div>
+              </div>
+              <div class="exhibit-cta">
+                <span class="exhibit-cta-dot"></span>
+                <span>View Exhibit</span>
+                <span class="exhibit-cta-dot"></span>
+              </div>
+            </div>
+
+            <!-- Nehru -->
+            <div class="exhibit-pedestal" data-leader="nehru">
+              <div class="exhibit-spotlight"></div>
+              <div class="exhibit-frame">
+                <div class="exhibit-frame-corner tl"></div>
+                <div class="exhibit-frame-corner tr"></div>
+                <div class="exhibit-frame-corner bl"></div>
+                <div class="exhibit-frame-corner br"></div>
+                <div class="exhibit-portrait-wrap">
+                  <img
+                    class="exhibit-portrait-img"
+                    src="assets/images/courage/nehru/potrait/portrait.webp"
+                    alt="Jawaharlal Nehru"
+                    loading="lazy"
+                    onerror="
+                      this.src = 'assets/images/fallback/portrait-fallback.jpg'
+                    "
+                  />
+                  <div class="exhibit-portrait-veil"></div>
+                </div>
+              </div>
+              <div class="exhibit-label">
+                <div class="exhibit-years">1889 — 1964</div>
+                <div class="exhibit-name">Jawaharlal Nehru</div>
+                <div class="exhibit-title">First Prime Minister of India</div>
+              </div>
+              <div class="exhibit-cta">
+                <span class="exhibit-cta-dot"></span>
+                <span>View Exhibit</span>
+                <span class="exhibit-cta-dot"></span>
+              </div>
+            </div>
+
+            <!-- Lakshmi Sahgal -->
+            <div class="exhibit-pedestal" data-leader="lakshmi-sahgal">
+              <div class="exhibit-spotlight"></div>
+              <div class="exhibit-frame">
+                <div class="exhibit-frame-corner tl"></div>
+                <div class="exhibit-frame-corner tr"></div>
+                <div class="exhibit-frame-corner bl"></div>
+                <div class="exhibit-frame-corner br"></div>
+                <div class="exhibit-portrait-wrap">
+                  <img
+                    class="exhibit-portrait-img"
+                    src="assets/images/courage/lakshmi-sahgal/potrait/portrait.webp"
+                    alt="Captain Lakshmi Sahgal"
+                    loading="lazy"
+                    onerror="
+                      this.src = 'assets/images/fallback/portrait-fallback.jpg'
+                    "
+                  />
+                  <div class="exhibit-portrait-veil"></div>
+                </div>
+              </div>
+              <div class="exhibit-label">
+                <div class="exhibit-years">1914 — 2012</div>
+                <div class="exhibit-name">Captain Lakshmi Sahgal</div>
+                <div class="exhibit-title">
+                  Commander, Rani of Jhansi Regiment
+                </div>
+              </div>
+              <div class="exhibit-cta">
+                <span class="exhibit-cta-dot"></span>
+                <span>View Exhibit</span>
+                <span class="exhibit-cta-dot"></span>
+              </div>
+            </div>
+
+            <!-- Neera Arya -->
+            <div class="exhibit-pedestal" data-leader="neera-arya">
+              <div class="exhibit-spotlight"></div>
+              <div class="exhibit-frame">
+                <div class="exhibit-frame-corner tl"></div>
+                <div class="exhibit-frame-corner tr"></div>
+                <div class="exhibit-frame-corner bl"></div>
+                <div class="exhibit-frame-corner br"></div>
+                <div class="exhibit-portrait-wrap">
+                  <img
+                    class="exhibit-portrait-img"
+                    src="assets/images/courage/Neera Arya/potrait/potrait.webp"
+                    alt="Neera Arya"
+                    loading="lazy"
+                    onerror="
+                      this.src = 'assets/images/fallback/portrait-fallback.jpg'
+                    "
+                  />
+                  <div class="exhibit-portrait-veil"></div>
+                </div>
+              </div>
+              <div class="exhibit-label">
+                <div class="exhibit-years">1902 — 1998</div>
+                <div class="exhibit-name">Neera Arya</div>
+                <div class="exhibit-title">Freedom Fighter &amp; INA Spy</div>
+              </div>
+              <div class="exhibit-cta">
+                <span class="exhibit-cta-dot"></span>
+                <span>View Exhibit</span>
+                <span class="exhibit-cta-dot"></span>
+              </div>
+            </div>
+
+            <!-- NEW: Sardar Vallabhbhai Patel -->
+            <div class="exhibit-pedestal" data-leader="patel">
+              <div class="exhibit-spotlight"></div>
+              <div class="exhibit-frame">
+                <div class="exhibit-frame-corner tl"></div>
+                <div class="exhibit-frame-corner tr"></div>
+                <div class="exhibit-frame-corner bl"></div>
+                <div class="exhibit-frame-corner br"></div>
+                <div class="exhibit-portrait-wrap">
+                  <img
+                    class="exhibit-portrait-img"
+                    src="assets/images/courage/sardar-vallabhbhai-patel/potrait/portrait.webp"
+                    alt="Sardar Vallabhbhai Patel"
+                    loading="lazy"
+                    onerror="
+                      this.src = 'assets/images/fallback/portrait-fallback.jpg'
+                    "
+                  />
+                  <div class="exhibit-portrait-veil"></div>
+                </div>
+              </div>
+              <div class="exhibit-label">
+                <div class="exhibit-years">1875 — 1950</div>
+                <div class="exhibit-name">Sardar Vallabhbhai Patel</div>
+                <div class="exhibit-title">The Iron Man of India</div>
+              </div>
+              <div class="exhibit-cta">
+                <span class="exhibit-cta-dot"></span>
+                <span>View Exhibit</span>
+                <span class="exhibit-cta-dot"></span>
+              </div>
+            </div>
+
+            <!-- NEW: Sarojini Naidu -->
+            <div class="exhibit-pedestal" data-leader="sarojini-naidu">
+              <div class="exhibit-spotlight"></div>
+              <div class="exhibit-frame">
+                <div class="exhibit-frame-corner tl"></div>
+                <div class="exhibit-frame-corner tr"></div>
+                <div class="exhibit-frame-corner bl"></div>
+                <div class="exhibit-frame-corner br"></div>
+                <div class="exhibit-portrait-wrap">
+                  <img
+                    class="exhibit-portrait-img"
+                    src="assets/images/courage/Sarojini Naidu/potrait/portrait.webp"
+                    alt="Sarojini Naidu"
+                    loading="lazy"
+                    onerror="
+                      this.src = 'assets/images/fallback/portrait-fallback.jpg'
+                    "
+                  />
+                  <div class="exhibit-portrait-veil"></div>
+                </div>
+              </div>
+              <div class="exhibit-label">
+                <div class="exhibit-years">1879 — 1949</div>
+                <div class="exhibit-name">Sarojini Naidu</div>
+                <div class="exhibit-title">The Nightingale of India</div>
+              </div>
+              <div class="exhibit-cta">
+                <span class="exhibit-cta-dot"></span>
+                <span>View Exhibit</span>
+                <span class="exhibit-cta-dot"></span>
+              </div>
+            </div>
+
+            <!-- Subhas Chandra Bose -->
+            <div class="exhibit-pedestal" data-leader="subhas-chandra-bose">
+              <div class="exhibit-spotlight"></div>
+              <div class="exhibit-frame">
+                <div class="exhibit-frame-corner tl"></div>
+                <div class="exhibit-frame-corner tr"></div>
+                <div class="exhibit-frame-corner bl"></div>
+                <div class="exhibit-frame-corner br"></div>
+                <div class="exhibit-portrait-wrap">
+                  <img
+                    class="exhibit-portrait-img"
+                    src="assets/images/courage/subhas-chandra-bose/potrait/portrait.webp"
+                    alt="Subhas Chandra Bose"
+                    loading="lazy"
+                    onerror="
+                      this.src = 'assets/images/fallback/portrait-fallback.jpg'
+                    "
+                  />
+                  <div class="exhibit-portrait-veil"></div>
+                </div>
+              </div>
+              <div class="exhibit-label">
+                <div class="exhibit-years">1897 — 1945</div>
+                <div class="exhibit-name">Subhas Chandra Bose</div>
+                <div class="exhibit-title">Founder of Azad Hind Fauj</div>
+              </div>
+              <div class="exhibit-cta">
+                <span class="exhibit-cta-dot"></span>
+                <span>View Exhibit</span>
+                <span class="exhibit-cta-dot"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 6. ASK A LEGAL QUESTION — AI Assistant -->
+      <section id="assistant">
+        <div class="section-label">AI LEGAL ASSISTANT</div>
+        <h2>Tell us what happened.</h2>
+        <p class="section-sub">
+          Describe your situation. The Pocket Judge listens and responds with
+          clarity.
+        </p>
+        <div class="chat-box">
+          <div class="example-queries">
+            <span class="query-chip">My employer is not paying my salary</span>
+            <span class="query-chip">I am facing online harassment</span>
+            <span class="query-chip">My landlord is threatening eviction</span>
+            <span class="query-chip">Police refused to file my complaint</span>
+            <span class="query-chip">I am facing domestic violence</span>
+          </div>
+          <div class="input-row">
+            <textarea
+              id="userQuery"
+              placeholder="Describe your legal situation here..."
+            ></textarea>
+            <button
+              id="voiceBtn"
+              class="voice-btn"
+              title="Click to speak your situation"
+              aria-label="Voice input"
+            >
+              🎤
+            </button>
+          </div>
+          <div id="voiceStatus" class="voice-status" aria-live="polite"></div>
+          <button type="button" class="btn-primary" id="submitQuery">
+            Ask The Pocket Judge
+          </button>
+          <div
+            id="aiResponse"
+            class="ai-response"
+            role="region"
+            aria-live="polite"
+          ></div>
+        </div>
+      </section>
+
+      <!-- 7. HELP IS ONE CALL AWAY — Emergency Resources -->
+      <section id="emergency">
+        <div class="section-label">EMERGENCY RESOURCES</div>
+        <h2 class="emergency-heading">Help is one<br />call away.</h2>
+        <p class="section-sub emergency-sub">
+          If you are in immediate danger or need legal assistance, these are
+          your fastest options.
+        </p>
+        <div class="emergency-grid">
+          <div class="emergency-card">
+            <div class="emergency-number">100</div>
+            <div class="emergency-name">Police</div>
+            <div class="emergency-desc">
+              Immediate police assistance for any emergency
+            </div>
+            <a href="tel:100" class="emergency-call">Call Now</a>
+          </div>
+          <div class="emergency-card">
+            <div class="emergency-number">1091</div>
+            <div class="emergency-name">Women's Helpline</div>
+            <div class="emergency-desc">24/7 support for women in distress</div>
+            <a href="tel:1091" class="emergency-call">Call Now</a>
+          </div>
+          <div class="emergency-card">
+            <div class="emergency-number">1930</div>
+            <div class="emergency-name">Cyber Crime</div>
+            <div class="emergency-desc">
+              Report online fraud, harassment, cybercrime
+            </div>
+            <a href="tel:1930" class="emergency-call">Call Now</a>
+          </div>
+          <div class="emergency-card">
+            <div class="emergency-number">15100</div>
+            <div class="emergency-name">Legal Aid</div>
+            <div class="emergency-desc">
+              Free legal services — NALSA helpline
+            </div>
+            <a href="tel:15100" class="emergency-call">Call Now</a>
+          </div>
+          <div class="emergency-card">
+            <div class="emergency-number">1098</div>
+            <div class="emergency-name">Childline</div>
+            <div class="emergency-desc">
+              24/7 emergency help for children in need
+            </div>
+            <a href="tel:1098" class="emergency-call">Call Now</a>
+          </div>
+          <div class="emergency-card">
+            <div class="emergency-number">112</div>
+            <div class="emergency-name">National Emergency</div>
+            <div class="emergency-desc">
+              Single number for police, fire, ambulance
+            </div>
+            <a href="tel:112" class="emergency-call">Call Now</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <div class="footer-title">THE POCKET JUDGE</div>
+        <div class="footer-sub">
+          Justice begins when people know their rights.
+        </div>
+        <div class="footer-copy">© 2026 The Pocket Judge</div>
+      </footer>
+    </main>
+
+    <!-- ============================================================
+         DIGITAL EXHIBIT OVERLAY
+    ============================================================ -->
+    <div
+      id="exhibitOverlay"
+      class="exhibit-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-label="Exhibit details"
+    >
+      <div class="exhibit-overlay-bg"></div>
+      <div class="exhibit-overlay-blur"></div>
+
+      <div class="exhibit-panel" id="exhibitPanel">
+        <button
+          class="exhibit-close"
+          id="exhibitClose"
+          aria-label="Close exhibit"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <line
+              x1="4"
+              y1="4"
+              x2="20"
+              y2="20"
+              stroke="currentColor"
+              stroke-width="1.2"
+            />
+            <line
+              x1="20"
+              y1="4"
+              x2="4"
+              y2="20"
+              stroke="currentColor"
+              stroke-width="1.2"
+            />
+          </svg>
+        </button>
+
+        <div class="exhibit-panel-header">
+          <span class="exhibit-museum-tag">DIGITAL MUSEUM OF INDIA</span>
+          <span class="exhibit-panel-divider">·</span>
+          <span class="exhibit-panel-room" id="exhibitRoom"
+            >HALL OF COURAGE</span
+          >
+        </div>
+
+        <div class="exhibit-body">
+          <!-- LEFT: Portrait + bio -->
+          <div class="exhibit-left">
+            <div class="exhibit-large-frame" id="exhibitLargeFrame">
+              <img id="exhibitPortrait" src="" alt="" />
+              <div class="exhibit-frame-glow"></div>
+            </div>
+            <div class="exhibit-bio-block">
+              <div class="exhibit-leader-years" id="exhibitYears"></div>
+              <h2 class="exhibit-leader-name" id="exhibitName"></h2>
+              <div class="exhibit-leader-title" id="exhibitTitle"></div>
+              <p class="exhibit-leader-bio" id="exhibitBio"></p>
+              <div class="exhibit-tags" id="exhibitTags"></div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Artifacts + Timeline tabs -->
+          <div class="exhibit-right">
+            <div class="exhibit-tabs" role="tablist">
+              <button
+                class="exhibit-tab active"
+                data-tab="artifacts"
+                role="tab"
+                aria-selected="true"
+              >
+                Historical Artifacts
+              </button>
+              <button
+                class="exhibit-tab"
+                data-tab="timeline"
+                role="tab"
+                aria-selected="false"
+              >
+                Journey Through History
+              </button>
+            </div>
+
+            <div class="exhibit-tab-content active" id="tab-artifacts">
+              <div class="artifacts-grid" id="artifactsGrid"></div>
+            </div>
+
+            <div class="exhibit-tab-content" id="tab-timeline">
+              <div class="timeline-track" id="timelineTrack"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTIFACT LIGHTBOX -->
+    <div
+      id="artifactLightbox"
+      class="artifact-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-label="Artifact details"
+    >
+      <div class="artifact-lightbox-bg"></div>
+      <div class="artifact-lightbox-content">
+        <button
+          class="artifact-lightbox-close"
+          id="artifactClose"
+          aria-label="Close artifact view"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <line
+              x1="4"
+              y1="4"
+              x2="20"
+              y2="20"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+            <line
+              x1="20"
+              y1="4"
+              x2="4"
+              y2="20"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+          </svg>
+        </button>
+        <div class="artifact-lightbox-img-wrap">
+          <img id="artifactLightboxImg" src="" alt="" />
+          <button
+            class="artifact-lightbox-nav prev"
+            id="artifactLightboxPrev"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <button
+            class="artifact-lightbox-nav next"
+            id="artifactLightboxNext"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+          <span
+            class="artifact-lightbox-counter"
+            id="artifactLightboxCounter"
+            hidden
+          ></span>
+        </div>
+        <div
+          class="artifact-lightbox-thumbs"
+          id="artifactLightboxThumbs"
+          hidden
+        ></div>
+        <div class="artifact-lightbox-info">
+          <div class="artifact-lightbox-tag">MUSEUM ARTIFACT</div>
+          <h3 id="artifactLightboxTitle"></h3>
+          <p id="artifactLightboxDesc"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Lenis Smooth Scroll CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="js/leaders-data.js"></script>
+    <script src="js/image-resolver.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

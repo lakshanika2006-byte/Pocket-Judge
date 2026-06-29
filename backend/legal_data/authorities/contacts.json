@@ -1,0 +1,114 @@
+{
+  "Employment": {
+    "primary": "District Labour Commissioner / Labour Court",
+    "website": "labour.gov.in",
+    "helpline": "1800-11-8005",
+    "description": "File complaints about unpaid wages, wrongful termination, and PF issues",
+    "additional": [
+      "EPFO (Provident Fund): epfindia.gov.in | 1800-11-8005",
+      "POSH complaints: Internal Complaints Committee (ICC) or Local Complaints Committee (LCC)",
+      "NALSA Free Legal Aid: 15100"
+    ]
+  },
+  "Cyber Crime": {
+    "primary": "National Cyber Crime Reporting Portal",
+    "website": "cybercrime.gov.in",
+    "helpline": "1930",
+    "description": "Report online fraud, hacking, identity theft, and social media abuse",
+    "additional": [
+      "Nearest Cyber Crime Police Station",
+      "RBI Banking Ombudsman (for bank fraud): rbi.org.in/cms/Scripts/bs_viewcontent.aspx",
+      "CERT-In: cert-in.org.in"
+    ]
+  },
+  "Property & Housing": {
+    "primary": "District Civil Court / Revenue Authority (Tehsildar)",
+    "website": "doj.gov.in",
+    "helpline": "15100",
+    "description": "For property disputes, encroachment, and title issues",
+    "additional": [
+      "RERA (builder disputes): varies by state — search 'state RERA'",
+      "NALSA Free Legal Aid: 15100",
+      "National Property Helpline: 1800-11-4000 (varies by state)"
+    ]
+  },
+  "Domestic Violence": {
+    "primary": "Protection Officer / Magistrate Court / Women's Helpline",
+    "website": "ncw.nic.in",
+    "helpline": "1091",
+    "description": "For domestic violence, dowry harassment, and abuse",
+    "additional": [
+      "Emergency: 112",
+      "Swadhar Greh (shelter homes): 181",
+      "NCW (National Commission for Women): ncw.nic.in",
+      "NALSA Free Legal Aid: 15100",
+      "iCall (psychological support): 9152987821"
+    ]
+  },
+  "Consumer Rights": {
+    "primary": "District Consumer Disputes Redressal Commission",
+    "website": "consumerhelpline.gov.in",
+    "helpline": "1915",
+    "description": "File consumer complaints for defective goods and deficient services",
+    "additional": [
+      "e-Daakhil (online filing): edaakhil.nic.in",
+      "RERA (real estate): varies by state",
+      "Insurance Ombudsman: cioins.co.in",
+      "Banking Ombudsman: rbi.org.in"
+    ]
+  },
+  "Criminal": {
+    "primary": "Nearest Police Station / District Sessions Court",
+    "website": "mha.gov.in",
+    "helpline": "100",
+    "description": "File FIR, apply for bail, seek legal aid for criminal matters",
+    "additional": [
+      "Emergency Police: 112",
+      "NALSA Free Legal Aid: 15100",
+      "High Court Legal Services Committee (for High Court matters)"
+    ]
+  },
+  "Family Law": {
+    "primary": "Family Court / District Legal Services Authority",
+    "website": "doj.gov.in",
+    "helpline": "15100",
+    "description": "For divorce, custody, maintenance, and matrimonial disputes",
+    "additional": [
+      "NALSA Free Legal Aid: 15100",
+      "NCW (for women): ncw.nic.in",
+      "iCall (counselling): 9152987821"
+    ]
+  },
+  "RTI": {
+    "primary": "Central Information Commission / State Information Commission",
+    "website": "cic.gov.in",
+    "helpline": "011-24622461",
+    "description": "For RTI applications and appeals",
+    "additional": [
+      "Online RTI filing: rtionline.gov.in",
+      "NALSA (for guidance): 15100"
+    ]
+  },
+  "Education": {
+    "primary": "District Education Officer / University Grants Commission",
+    "website": "ugc.ac.in",
+    "helpline": "1800-11-8002",
+    "description": "For education rights, fee disputes, and discrimination in educational institutions",
+    "additional": [
+      "AICTE (technical education): aicte-india.org",
+      "National Commission for Scheduled Castes: ncsc.nic.in",
+      "NALSA Free Legal Aid: 15100"
+    ]
+  },
+  "General": {
+    "primary": "National Legal Services Authority (NALSA)",
+    "website": "nalsa.gov.in",
+    "helpline": "15100",
+    "description": "Free legal aid for all citizens — lawyers, advice, and representation",
+    "additional": [
+      "District Legal Services Authority (DLSA) — in every district",
+      "Supreme Court Legal Services Committee: sclsc.nic.in",
+      "Emergency: 112"
+    ]
+  }
+}

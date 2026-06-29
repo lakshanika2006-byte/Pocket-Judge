@@ -1,0 +1,99 @@
+{
+  "category": "Domestic Violence",
+  "keywords": [
+    "domestic violence",
+    "husband",
+    "wife",
+    "abuse",
+    "beaten",
+    "assault",
+    "dowry",
+    "in-laws",
+    "harassment",
+    "marital",
+    "divorce",
+    "cruelty",
+    "mental abuse",
+    "physical abuse",
+    "threat",
+    "scared",
+    "afraid",
+    "shelter",
+    "refuge",
+    "forced marriage",
+    "child abuse",
+    "family violence",
+    "restraining order",
+    "protection order",
+    "maintenance",
+    "alimony",
+    "streedhan",
+    "dv act",
+    "498a",
+    "police complaint domestic"
+  ],
+  "fundamental_rights": [
+    "Article 21 — Right to Life and Personal Liberty (includes right to live with dignity)",
+    "Article 14 — Right to Equality before Law",
+    "Article 15 — Prohibition of discrimination on grounds of sex",
+    "Article 39(e) — State shall ensure health and strength of workers and prevent abuse"
+  ],
+  "laws": [
+    {
+      "name": "Protection of Women from Domestic Violence Act, 2005",
+      "sections": [
+        "Section 3 (definition of domestic violence — physical, sexual, verbal, economic)",
+        "Section 12 (application for Protection Order)",
+        "Section 17 (right to reside in shared household)",
+        "Section 18 (Protection Orders — restraining abuser)",
+        "Section 19 (Residence Orders)",
+        "Section 20 (Monetary Relief)",
+        "Section 22 (Compensation Orders)",
+        "Section 23 (ex-parte interim orders)"
+      ],
+      "summary": "Comprehensive law providing protection orders, residence rights, monetary relief, and maintenance to women facing domestic violence.",
+      "remedy": "File application through Protection Officer, Magistrate Court, or Service Provider NGO"
+    },
+    {
+      "name": "Bharatiya Nyaya Sanhita (BNS), 2023 / IPC",
+      "sections": [
+        "Section 85/86 BNS (cruelty by husband or relatives — replaces IPC 498A)",
+        "Section 80/83 BNS (dowry death — replaces IPC 304B)",
+        "Section 84 BNS (dowry prohibition)",
+        "Section 74/75/76 BNS (assault, sexual offences)"
+      ],
+      "summary": "Criminal offences for domestic cruelty, dowry harassment, and physical abuse. IPC 498A is a cognisable, non-bailable offence.",
+      "remedy": "File FIR at police station — police must register, it is a cognisable offence"
+    },
+    {
+      "name": "Dowry Prohibition Act, 1961",
+      "sections": [
+        "Section 3 (giving/taking dowry — 5 years + Rs 15,000 fine)",
+        "Section 4 (demanding dowry)"
+      ],
+      "summary": "Prohibits demand or exchange of dowry. Both giving and taking dowry is a criminal offence.",
+      "remedy": "File complaint with Dowry Prohibition Officer or police"
+    },
+    {
+      "name": "Hindu Marriage Act, 1955 / Special Marriage Act, 1954",
+      "sections": [
+        "Section 13 (grounds for divorce)",
+        "Section 24 (maintenance pendente lite)",
+        "Section 25 (permanent alimony)"
+      ],
+      "summary": "Provides grounds for divorce and maintenance rights during and after separation.",
+      "remedy": "File petition in Family Court"
+    }
+  ],
+  "steps": [
+    "EMERGENCY: If in immediate danger, call 112 (Emergency) or 1091 (Women's Helpline) immediately",
+    "Move to a safe place — stay with family, friends, or a shelter home (Swadhar Greh: 181)",
+    "Document all injuries with photographs, medical reports, and hospital records",
+    "Save all threatening messages, emails, and voice recordings on a safe device",
+    "Contact your nearest Protection Officer (every district has one) for free assistance",
+    "File application for Protection Order in Magistrate Court — Protection Officer can help you do this for free",
+    "File FIR at the nearest police station under BNS Section 85 (IPC 498A) if cruelty is involved",
+    "Apply for maintenance under Section 125 CrPC / BNSS in Family Court",
+    "Contact free legal aid: NALSA 15100 or your District Legal Services Authority"
+  ]
+}
