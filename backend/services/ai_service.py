@@ -1,7 +1,4 @@
 """
-services/ai_service.py
-----------------------
-AI response generation for the full legal pipeline.
 Uses Ollama (llama3.2) via services/llm.py.
 """
 from services.llm import ask_llm
