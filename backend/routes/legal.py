@@ -1,11 +1,3 @@
-"""
-routes/legal.py
----------------
-Full legal pipeline endpoints.
-NOTE: /api/ask is defined in main.py (simple LLM call).
-      This router provides /api/legal/ask (full pipeline) and /api/ask-ai.
-"""
-
 import time
 from fastapi import APIRouter, Depends
 from fastapi.responses import StreamingResponse
