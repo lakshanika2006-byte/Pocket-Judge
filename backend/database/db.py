@@ -1,10 +1,3 @@
-"""
-database/db.py
---------------
-SQLite database setup using SQLAlchemy ORM.
-To migrate to PostgreSQL later: change DATABASE_URL only.
-"""
-
 import os
 from datetime import datetime
 from sqlalchemy import (
