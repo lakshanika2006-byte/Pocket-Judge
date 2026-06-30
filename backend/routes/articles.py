@@ -1,10 +1,3 @@
-"""
-routes/articles.py
--------------------
-Endpoints for browsing and looking up Constitutional Articles
-(Fundamental Rights knowledge base).
-"""
-
 from fastapi import APIRouter, HTTPException, Query
 from services.articles_service import (
     list_articles_summary,
