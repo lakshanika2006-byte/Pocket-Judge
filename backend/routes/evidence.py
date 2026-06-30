@@ -1,9 +1,3 @@
-"""
-routes/evidence.py
-------------------
-Evidence upload and OCR extraction endpoints.
-"""
-
 import os
 import uuid
 from fastapi import APIRouter, UploadFile, File, Depends, HTTPException
